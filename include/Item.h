@@ -3,6 +3,7 @@
 
 #include <string>
 
+
 class Item {
 
 private:
@@ -12,6 +13,8 @@ private:
     int seller_id;
 
 public:
+
+    // Get info
     Item(std::string item_name, double price, int item_id, int seller_id);
     void print_item_info();
     std::string get_item_name();
@@ -19,9 +22,9 @@ public:
     int get_item_id();
     int get_seller_id();
 
-
+    // Set info
     void set_price(double price);
-    
+    void destroy_item();
 
 };
 

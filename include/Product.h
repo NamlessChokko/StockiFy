@@ -14,6 +14,8 @@ private:
 
 
 public:
+
+    // Get info
     Product(std::string product_name, double price, int product_id, int seller_id);
     void print_product_info();
     std::string get_product_name();
