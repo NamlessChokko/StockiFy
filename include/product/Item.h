@@ -12,6 +12,7 @@ private:
     int item_id;
     int seller_id;
 
+
 public:
 
     // Get info

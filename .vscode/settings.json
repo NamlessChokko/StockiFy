@@ -2,5 +2,8 @@
     "files.associations": {
         "*.tcc": "cpp",
         "string.h": "c"
-    }
+    },
+    "cSpell.words": [
+        "STOCKIFY"
+    ]
 }
