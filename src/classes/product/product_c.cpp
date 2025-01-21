@@ -1,7 +1,7 @@
 #include "include/Product.h"
 #include <iostream>
 
-// Constructor:
+
 Product::Product(std::string product_name, double price, int product_id, int seller_id)
 {
     product_name = product_name;
@@ -11,7 +11,6 @@ Product::Product(std::string product_name, double price, int product_id, int sel
 
 }
 
-// Get info methods
 void Product::print_product_info()
 {
     std::cout << "Product Name: " << product_name << std::endl;

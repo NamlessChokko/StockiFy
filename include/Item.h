@@ -24,6 +24,8 @@ public:
 
     // Set info
     void set_price(double price);
+
+    // Modify item
     void destroy_item();
 
 };
