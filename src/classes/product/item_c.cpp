@@ -52,15 +52,16 @@ int Item::set_price (double new_price){
     int error_code = 0;
     price = new_price;
 
-
-
     return error_code;
 }
 
 
 // Modify Item
-void destroy_item(){
-
+void Item::destroy_item(){
+    item_name = "";
+    price = 0;
+    item_id = 0;
+    seller_id = 0;
 
 }
 

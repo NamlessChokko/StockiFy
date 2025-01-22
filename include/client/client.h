@@ -33,6 +33,8 @@ public:
     int set_client_description(std::string new_description);
     int set_seller_in(bool new_seller_state);
 
+    // Modify client:
+    void destroy_client();
 
 };
 

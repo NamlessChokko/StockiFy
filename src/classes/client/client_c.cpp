@@ -25,23 +25,23 @@ void Client::print_client_info(){
 
 // Get Info:
 int Client::get_client_id(){
-    return client_id;
 
+    return client_id;
 }
 
 string Client::get_client_name(){
-    return client_name;
 
+    return client_name;
 }
 
 string Client::get_client_description(){
-    return client_description;
 
+    return client_description;
 }
 
 bool Client::is_client_seller(){
-    return is_seller;
 
+    return is_seller;
 }
 
 
@@ -67,7 +67,6 @@ int Client::set_client_name(string new_name){
 
     client_name = (error_code == 0)? new_name : client_name; 
     return error_code;
-
 }
 
 int Client::set_client_description(string new_description){
@@ -90,7 +89,6 @@ int Client::set_client_description(string new_description){
 
     client_description = (error_code == 0)? new_description : client_description;
     return error_code;
-
 }
 
 int Client::set_seller_in(bool new_seller_state){
@@ -99,8 +97,18 @@ int Client::set_seller_in(bool new_seller_state){
 
     is_seller = new_seller_state;
     return error_code;
+}
+
+
+// Modify Client
+void Client::destroy_client(){
+    client_id = 0;
+    client_name = "";
+    client_description = "";
+    is_seller = false;
 
 }
+
 
 //TODO: Create function to validate strings
 //TODO: Define fixed constant with allowed characters
