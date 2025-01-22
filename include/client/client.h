@@ -17,7 +17,7 @@ public:
 public:
 
     // Constructor:
-    Client(std::string client_name, bool is_seller);
+    Client(std::string _client_name, bool _is_seller);
 
     // Print info:
     void print_client_info();
@@ -31,7 +31,7 @@ public:
     // Set info:
     int set_client_name(std::string new_name);
     int set_client_description(std::string new_description);
-    int set_seller(bool new_seller_state);
+    int set_seller_in(bool new_seller_state);
 
 
 };

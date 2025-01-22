@@ -5,15 +5,13 @@
 
 using namespace std;
 
-
-// Constructor:
-Item::Item(string item_name, double price, int item_id, int seller_id)
+// Constructor with underscore parameters:
+Item::Item(string _item_name, double _price, int _item_id, int _seller_id)
 {
-    item_name = item_name;
-    price = price;
-    item_id = item_id;
-    seller_id = seller_id;
-
+    item_name = _item_name;
+    price = _price;
+    item_id = _item_id;
+    seller_id = _seller_id;
 }
 
 
@@ -57,6 +55,13 @@ int Item::set_price (double new_price){
 
 
     return error_code;
+}
+
+
+// Modify Item
+void destroy_item(){
+
+
 }
 
 

@@ -1,21 +1,19 @@
-#include "include/client/client.h"
+#include "include/client/Client.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-
 // Constructor
-Client::Client(string client_name, bool is_seller){
+Client::Client(string _client_name, bool _is_seller){
     client_id = 0001;
-    client_name = client_name;
+    client_name = _client_name;
     client_description = "Empty";
-    is_seller = is_seller;
-
+    is_seller = _is_seller;
 }
 
 
-// Print Info:
+ // Print Info:
 void Client::print_client_info(){
     cout << "Client id: " << client_id << endl;
     cout << "Client name: " << client_name << endl;
@@ -95,7 +93,7 @@ int Client::set_client_description(string new_description){
 
 }
 
-int Client::set_seller(bool new_seller_state){
+int Client::set_seller_in(bool new_seller_state){
     int error_code = 0;
 
 
