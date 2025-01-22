@@ -9,6 +9,8 @@
 #include "utils/Strings_u.h"
 #include "utils/Error_Handler.h"
 
+#include "../lib/nlohmann/json.hpp"
+
 
 
 #endif
