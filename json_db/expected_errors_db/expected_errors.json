@@ -1,0 +1,25 @@
+{
+    "database_crud" : {
+        "1001" : "Database connection failed"
+    },
+
+    "run_time" : {
+        "2001" : "Error in running the code"
+    },
+
+    "client_input" : {
+        "3001" : "Invalid option selected"
+    },
+
+    "Interaction_permissions" : {
+        "4001" : "You do not have permission to perform this action"
+    },
+
+    "validating_data" : {
+        "5001" : "Invalid data"
+    },
+
+    "file_handling" : {
+        "6001" : "Error in reading the file"
+    }
+}

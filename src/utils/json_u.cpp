@@ -31,10 +31,17 @@ optional<string> read_string_from_json(string file_path, string key) {
 
 optional<string> read_error_message(string file_path, string error_type, string key){
 
+    // Read the file
+    nlohmann::json json_file;
+
+    try {
+        ifstream file(file_path);
+        file >> json_file;
+        file.close();
+    } catch (nlohmann::json::parse_error& e) {;
+        return nullopt;
+    }
 
 
-
-    return json_file
+    return json_file[error_type][key];
 }
-
-// TODO: Implement the read_error_message function

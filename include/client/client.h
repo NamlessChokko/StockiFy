@@ -7,7 +7,7 @@
 
 class Client {
 
-public:
+private:
     int client_id; 
     std::string client_name;
     std::string client_description;
