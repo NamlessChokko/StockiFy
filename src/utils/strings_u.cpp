@@ -1,18 +1,20 @@
 #include "include/utils/Strings_u.h"
+#include "../../include/utils/Json_U.h"
 #include <string>
 #include <optional>
 #include <iostream>
 
 using namespace std;
 
-const string default_allowed_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const string default_file_path = "../../json_db/strings_db.json";
+const optional<string> default_allowed_characters = get_string(default_file_path, "default_allowed_char");
 
 
 optional<string> valid_string (
     string input = "",
     int minimum_length = 0,
     int maximum_length = 5,
-    string allowed_characters = default_allowed_characters,
+    string allowed_characters = (default_allowed_characters == nullopt)? "" : default_allowed_characters.value(),
     bool end_space = false,
     bool start_space = false
 
@@ -39,5 +41,4 @@ optional<string> valid_string (
     return input;
 }
 
-// TODO: Add "default_allowed_characters" in the string database
-// TODO: ASCII instead of text strings
+// TODO: implement settings to find json file path 
