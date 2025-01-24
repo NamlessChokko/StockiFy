@@ -49,7 +49,7 @@ bool Client::is_client_seller(){
 // Set Info:
 bool Client::set_client_name(string new_name){
 
-    optional<string> optNew_name = valid_string(new_name, 0, 15, "client_name", false, false);
+    optional<string> optNew_name = valid_string(new_name, 3, 15, "client_name", false, false);
 
     if (!optNew_name.has_value()){
         return false;

@@ -2,6 +2,7 @@
 #include <optional>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #include "../../include/utils/Json_U.h"
 #include "../../lib/nlohmann/json.hpp"
 
@@ -16,8 +17,12 @@ optional<string> get_string(string file_path, string key) {
         ifstream file(file_path);
         file >> json_file;
         file.close();
-    } catch (json::parse_error& e) {;
-        return nullopt;
+    } catch (json::parse_error& e) {
+        cout << "Error: " << e.what() << endl;
+        cout << "Could not open file: " << file_path << endl;
+        cout << "This is a unexpected error, please check documentation for more information" << endl;
+        cout << "Exiting..." << endl;
+        exit(1);
     }
 
     if (json_file.find(key) == json_file.end()) {
@@ -37,7 +42,11 @@ optional<string> read_error_message(string file_path, string error_type, int err
         file >> json_file;
         file.close();
     } catch (json::parse_error& e) {;
-        return nullopt;
+        cout << "Error: " << e.what() << endl;
+        cout << "Could not open file: " << file_path << endl;
+        cout << "This is a unexpected error, please check documentation for more information" << endl;
+        cout << "Exiting..." << endl;
+        exit(1);
     }
 
 
