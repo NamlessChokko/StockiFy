@@ -8,11 +8,12 @@
     },
 
     "client_input" : {
-        "3001" : "Invalid option selected"
+        "3001" : "Invalid option selected",
+        "3002" : "Inexistent option selected"
     },
 
     "Interaction_permissions" : {
-        "4001" : "You do not have permission to perform this action"
+        "4001" : "Client does not have permission"
     },
 
     "validating_data" : {

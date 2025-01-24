@@ -27,9 +27,10 @@ optional<string> get_string(string file_path, string key) {
     return json_file[key];
 }
 
-optional<string> read_error_message(string file_path, string error_type, string key){
+optional<string> read_error_message(string file_path, string error_type, int error_number){
 
     json json_file;
+    string key = to_string(error_number); 
 
     try {
         ifstream file(file_path);
