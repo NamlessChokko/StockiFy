@@ -1,26 +1,33 @@
 {
     "database_crud" : {
-        "1001" : "Database connection failed"
+        "101" : "Database connection failed"
     },
 
     "run_time" : {
-        "2001" : "Error in running the code"
+        "201" : "Error in running the code"
     },
 
-    "client_input" : {
-        "3001" : "Invalid option selected",
-        "3002" : "Inexistent option selected"
+    "menu_input" : {
+        "301" : "Invalid option selected",
+        "302" : "Inexistent option selected"
     },
 
     "Interaction_permissions" : {
-        "4001" : "Client does not have permission"
+        "401" : "Client does not have permission",
+        "402" : "Current client does not have permission to change seller status." 
     },
 
     "validating_data" : {
-        "5001" : "Invalid data"
+        "501" : "Invalid data."
     },
 
     "file_handling" : {
-        "6001" : "Error in reading the file"
+        "601" : "Error in reading the file."
+    },
+
+    "client_input" : {
+        "701" : "Invalid input for client name, please enter a valid name.",
+        "702" : "Invalid input for client description, please enter a valid description"
+
     }
 }

@@ -29,9 +29,9 @@ public:
     bool is_client_seller();
     
     // Set info:
-    int set_client_name(std::string new_name);
-    int set_client_description(std::string new_description);
-    int set_seller_in(bool new_seller_state);
+    bool set_client_name(std::string new_name);
+    bool set_client_description(std::string new_description);
+    bool set_seller_in(bool new_seller_state);
 
     // Modify client:
     void destroy_client();
