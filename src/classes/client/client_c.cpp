@@ -1,5 +1,5 @@
-#include "include/client/Client.h"
-#include "include/utils/Strings_u.h"
+#include "../../../include/client/Client.h"
+#include "../../../include/utils/Strings_u.h"
 #include <iostream>
 #include <string>
 

@@ -1,10 +1,12 @@
 #include "../../include/StockiFy.h"
-#include <stdio.h>
 #include <string.h>
+#include <iostream>
 
+using namespace std;
 
 int main (){
-    Product p1("Product 1", 10.0, 1, 1);
+    Client client1("John Doe", true);
+    client1.print_client_info();
 
 
 

@@ -17,7 +17,7 @@ private:
 public:
 
     // Constructor
-    Item(std::string _item_name, double _price, int _item_id, int _seller_id);
+    Item(std::string, double, int, int);
     
     // Print Info
     void print_item_info();
@@ -29,7 +29,7 @@ public:
     int get_seller_id();
 
     // Set info
-    int set_price(double new_price);
+    int set_price(double);
 
     // Modify item
     void destroy_item();
