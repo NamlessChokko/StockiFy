@@ -3,9 +3,7 @@
 
 #include <optional>
 #include <string>
-#include <fstream>
-
-#include "../../lib/nlohmann/json.hpp"
+#include "../lib/nlohmann/json.hpp"
 
 std::optional<std::string> get_string(std::string file_path, std::string key);
 

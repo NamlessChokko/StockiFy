@@ -27,42 +27,42 @@ void Item::print_item_info(){
 
 // Get Info
 string Item::get_item_name(){
-    return item_name;
 
+    return item_name;
 }
 
 double Item::get_price(){
-    return price;
 
+    return price;
 }
 
 int Item::get_item_id(){
+    
     return item_id;
-
 }
 
 int Item::get_seller_id(){
+    
     return seller_id;
-
 }
 
 
 // Set Info
-int Item::set_price (double new_price){
-    int error_code = 0;
-    price = new_price;
+bool Item::set_price (double _new_price){
+    price = _new_price;
 
-    return error_code;
+    return true;
 }
 
 
 // Modify Item
-void Item::destroy_item(){
+bool Item::destroy_item(){
     item_name = "";
     price = 0;
     item_id = 0;
     seller_id = 0;
 
+    return true;
 }
 
 

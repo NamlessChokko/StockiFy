@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const string default_file_path = "../../json_db/strings_db.json";
+const string default_file_path = "../json_db/strings_db.json";
 
 
 
@@ -20,20 +20,19 @@ optional<string> valid_string (
 
 ) {
 
-    if (input.length() < minimum_length || input.length() > maximum_length) {
+    if (static_cast<int>(input.length()) < minimum_length || static_cast<int>(input.length()) > maximum_length) {
         return nullopt;
     }
 
     optional<string> opt_allowed_characters = get_string(key, default_file_path);
-    string allowed_characters;
 
     if (!opt_allowed_characters.has_value()) {
         return nullopt;
     }
 
-    allowed_characters = opt_allowed_characters.value();
+    string allowed_characters = opt_allowed_characters.value();
 
-    for (int i = 0; i < input.length(); i++) {
+    for (int i = 0; i < static_cast<int>(input.length()); i++) {
         if (allowed_characters.find(input[i]) == string::npos) {
             return nullopt;
         }

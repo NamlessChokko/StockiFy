@@ -2,7 +2,6 @@
 #define PURCHASE_H
 
 #include <string>
-#include <optional>
 
 
 class Purchase {
@@ -33,7 +32,7 @@ public:
 
 
     // Modify item
-    void remove_purchase();
+    bool remove_purchase();
 
 };
 

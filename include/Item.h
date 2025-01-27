@@ -2,7 +2,6 @@
 #define ITEM_H
 
 #include <string>
-#include <optional>
 
 
 class Item {
@@ -17,7 +16,7 @@ private:
 public:
 
     // Constructor
-    Item(std::string, double, int, int);
+    Item(std::string _item_name, double _price, int _item_id, int _seller_id);
     
     // Print Info
     void print_item_info();
@@ -29,10 +28,10 @@ public:
     int get_seller_id();
 
     // Set info
-    int set_price(double);
+    bool set_price(double _new_price);
 
     // Modify item
-    void destroy_item();
+    bool destroy_item();
 
 };
 

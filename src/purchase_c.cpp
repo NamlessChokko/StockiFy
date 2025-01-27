@@ -63,7 +63,7 @@ int Purchase::get_buyer_id() {
 
 
 // Modify item
-void Purchase::remove_purchase() {
+bool Purchase::remove_purchase() {
     purchase_id = 0;
     item_name = "";
     price = 0;
@@ -71,4 +71,5 @@ void Purchase::remove_purchase() {
     seller_id = 0;
     buyer_id = 0;
     
+    return true;
 }
