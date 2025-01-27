@@ -3,8 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include "../../include/utils/Json_U.h"
-#include "../../lib/nlohmann/json.hpp"
+#include "../include/Json_U.h"
+#include "../lib/nlohmann/json.hpp"
 
 using namespace std;
 using namespace nlohmann;
