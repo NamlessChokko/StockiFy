@@ -33,7 +33,7 @@ public:
     bool set_seller_in(bool _new_seller_state);
 
     // Modify client:
-    void destroy_client();
+    void clean_client_info();
 
 };
 

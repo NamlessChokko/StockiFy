@@ -11,6 +11,9 @@ Client::Client(string _client_name, bool _is_seller){
     client_name = _client_name;
     client_description = "Empty";
     is_seller = _is_seller;
+
+    _client_name.clear();
+
 }
 
 
@@ -48,7 +51,7 @@ bool Client::is_client_seller(){
 
 // Set Info:
 bool Client::set_client_name(string new_name){
-    optional<string> optNew_name = valid_string(new_name, 3, 20, "client_name", false, false);
+    optional<string> optNew_name = valid_string(new_name, 3, 100, "client_name", false, false);
     
     if (optNew_name == nullopt){
         return false;
@@ -59,9 +62,10 @@ bool Client::set_client_name(string new_name){
 }
 
 bool Client::set_client_description(string new_description){
-    optional<string> optNew_description = valid_string(new_description, 0, 100, "client_description", false, true);
+    optional<string> optNew_description = valid_string(new_description, 0, 200, "client_description", false, true);
 
     if (optNew_description == nullopt){
+        client_description = client_description;
         return false;
     }
 
@@ -77,7 +81,7 @@ bool Client::set_seller_in(bool new_seller_state){
 
 
 // Modify Client
-void Client::destroy_client(){
+void Client::clean_client_info(){
     client_id = 0;
     client_name = "";
     client_description = "";

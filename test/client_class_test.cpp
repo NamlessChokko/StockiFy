@@ -25,7 +25,7 @@ void setting_new_value (Client client1){
     new_seller_status = (c == '1')? true : false;
 
     // Client info is changed 
-    cout << "Setting client info: " << endl;
+    cout << "\n\n" << "Setting client info: " << endl;
 
     cout << "New Client name: " << new_name << endl;
     if (!client1.set_client_name(new_name)){
@@ -49,7 +49,9 @@ void setting_new_value (Client client1){
     }
 
     cout << "\n\n" << "New client info: " << endl;
-    client1.print_client_info();
+    cout << "Client name: " << client1.get_client_name() << endl;
+    cout << "Client description: " << client1.get_client_description() << endl;
+    cout << "Client seller status: " << client1.is_client_seller() << endl;
 
 
 }
