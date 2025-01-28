@@ -50,25 +50,24 @@ bool Client::is_client_seller(){
 
 
 // Set Info:
-bool Client::set_client_name(string new_name){
-    optional<string> optNew_name = valid_string(new_name, 3, 50, "client_name", false, false);
+bool Client::set_client_name(string new_name){ 
     
-    if (optNew_name == nullopt){
+    if (!is_valid_string(new_name,"client_name", 3, 50, false, false)){
         return false;
     }
 
-    client_name = optNew_name.value(); 
+    client_name = new_name; 
     return true;
 }
 
 bool Client::set_client_description(string new_description){
-    optional<string> optNew_description = valid_string(new_description, 0, 200, "client_description", false, true);
+    
 
-    if (optNew_description == nullopt){
+    if (!is_valid_string(new_description, "client_description", 0, 200, false, true)){
         return false;
     }
 
-    client_description = optNew_description.value();
+    client_description = new_description;
     return true;
 }
 

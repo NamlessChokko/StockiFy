@@ -46,7 +46,7 @@ int main (){
     Client new_client ("new name", 0);
     string name = "";
     string description = "";
-    int seller = 0;
+    int seller = 1;
 
     while (1){
         cout << "Enter new name: "; 
