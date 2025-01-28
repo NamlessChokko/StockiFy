@@ -1,0 +1,33 @@
+{
+    "database_crud" : {
+        "101" : "Database connection failed"
+    },
+
+    "run_time" : {
+        "201" : "Error in running the code"
+    },
+
+    "menu_input" : {
+        "301" : "Invalid option selected",
+        "302" : "Inexistent option selected"
+    },
+
+    "Interaction_permissions" : {
+        "401" : "Client does not have permission",
+        "402" : "Current client does not have permission to change seller status." 
+    },
+
+    "validating_data" : {
+        "501" : "Invalid data."
+    },
+
+    "file_handling" : {
+        "601" : "Error in reading the file."
+    },
+
+    "client_input" : {
+        "701" : "Invalid input for client name, please enter a valid name.",
+        "702" : "Invalid input for client description, please enter a valid description"
+
+    }
+}

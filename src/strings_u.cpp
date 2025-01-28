@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const string default_file_path = "../json_db/strings_db.json";
+const string default_file_path = "json_db/allowed_char.json";
 
 
 
@@ -24,7 +24,7 @@ optional<string> valid_string (
         return nullopt;
     }
 
-    optional<string> opt_allowed_characters = get_string(key, default_file_path);
+    optional<string> opt_allowed_characters = get_string(default_file_path, key);
 
     if (!opt_allowed_characters.has_value()) {
         return nullopt;

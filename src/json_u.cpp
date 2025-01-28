@@ -17,8 +17,9 @@ optional<string> get_string(string file_path, string key) {
         file >> json_file;
         file.close();
     } catch (json::parse_error& e) {
-        cout << "Error: " << e.what() << endl;
+        cout << "Error[001]: " << e.what() << endl;
         cout << "Could not open file: " << file_path << endl;
+        cout << "With key: " << key << endl;
         cout << "This is a unexpected error, please check documentation for more information" << endl;
         cout << "Exiting..." << endl;
         exit(1);
@@ -41,7 +42,7 @@ optional<string> read_error_message(string file_path, string error_type, int err
         file >> json_file;
         file.close();
     } catch (json::parse_error& e) {;
-        cout << "Error: " << e.what() << endl;
+        cout << "Error[002]: " << e.what() << endl;
         cout << "Could not open file: " << file_path << endl;
         cout << "This is a unexpected error, please check documentation for more information" << endl;
         cout << "Exiting..." << endl;

@@ -4,7 +4,7 @@
 #include <optional>
 
 using namespace std;
-const string default_file_path = "../json_db/expected_errors.json";
+const string default_file_path = "json_db/expected_errors.json";
 
 
 string error_handler (
