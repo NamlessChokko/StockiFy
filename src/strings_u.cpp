@@ -15,8 +15,8 @@ optional<string> valid_string (
     int minimum_length = 0,
     int maximum_length = 5,
     string key = "default_allowed_char",
-    bool end_space = false,
-    bool start_space = false
+    bool start_space = false,
+    bool end_space = false
 
 ) {
 
