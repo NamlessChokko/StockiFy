@@ -1,4 +1,5 @@
 #include "../include/StockiFy.h"
+#include "../include/getch.h"
 #include <string.h>
 #include <iostream>
 #include <unistd.h>
@@ -43,31 +44,51 @@ void cleaning_data(Client client){
 }
 
 int main (){
-    Client new_client ("new name", 0);
-    string name = "";
-    string description = "";
-    int seller = 1;
+    system("clear");
+    char cwd[1024];
+    getcwd(cwd, sizeof(cwd));
+    cout << "Current working dir: " << cwd << endl;
 
-    while (1){
-        new_client.print_client_info();
-        cout << "\n";
-        cout << "Enter new name: "; 
-        getline(cin, name);
-        cout << "Enter new description: ";
-        getline(cin, description);
-        cout << "Enter new seller status: ";
-        std::cin >> seller; 
-        cout << "\n";
 
-        changing_and_showing(new_client, name, description, seller);
-        cleaning_data(new_client);
+    char c = 'a';
 
-        cout << "Press ENTER to continue, \"q\" for quit..." << endl;
-        std::cin.ignore();
-        if (cin.get() == 'q') break;
+
+    Option_Menu menu;
+    menu.set_menu_name("Menu Class Test");
+    menu.set_menu_title("Menu Class Test Title");
+    menu.set_menu_subtitle("Menu Class Test Subtitle");
+    menu.set_menu_body_paragraph("This test will show the functionality of the Menu class: body paragraph");
+    menu.set_options_count(4);
+    menu.set_options("Open menu again", 0);
+    menu.set_options("Option 2", 1);
+    menu.set_options("Option 3", 2);
+    menu.set_options("Exit", 3);
+
+    print_Option_menu(menu);
+    cout << rst;
+    c = getch();
+    system("clear");
+
+    switch (c) {
+        case '1':
+            print_Option_menu(menu);
+            getch();
+            break;
+        case '2':
+            cout << "Option 2 selected" << endl;
+            break;
+        case '3':
+            cout << "Exit selected" << endl;
+            break;
+        default:
+            cout << "Invalid option" << endl;
+            break;
     }
-    
-    cout << "Press ENTER to continue..." << endl;
+
+
+
+
+    cout << "Press ENTER to continue..." << c << endl;
     std::cin.ignore();
     system("clear");
     return 0;

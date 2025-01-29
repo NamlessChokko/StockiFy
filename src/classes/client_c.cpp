@@ -6,13 +6,8 @@
 using namespace std;
 
 // Constructor
-Client::Client(string _client_name, bool _is_seller){
-    client_id = 0001;
-    client_name = _client_name;
-    client_description = "Empty";
-    is_seller = _is_seller;
-
-    _client_name.clear();
+Client::Client(){
+    clean_client_info();
 
 }
 
@@ -80,7 +75,7 @@ bool Client::set_seller_in(bool new_seller_state){
 
 // Modify Client
 void Client::clean_client_info(){
-    client_id = 0;
+    client_id = 0001;
     client_name = "";
     client_description = "";
     is_seller = false;

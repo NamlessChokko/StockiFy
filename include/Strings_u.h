@@ -14,7 +14,6 @@ int is_valid_string (
     bool end_space
 
 );
-// This function is use to validate strings
 
 
 #endif

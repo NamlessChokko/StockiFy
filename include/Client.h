@@ -7,16 +7,20 @@
 class Client {
 
 private:
-    int client_id; 
+    int client_id;
+    bool is_seller;
+
     std::string client_name;
     std::string client_description;
-    bool is_seller;
+
+    std::string client_password;
+    std::string client_email;
 
 
 public:
 
     // Constructor:
-    Client(std::string _client_name, bool _is_seller);
+    Client();
 
     // Print info:
     void print_client_info();
