@@ -9,6 +9,7 @@
 #include "Purchase.h"
 #include "Strings_u.h"
 #include "Utils.h"
+#include "Definitions.h"
 
 
 #endif

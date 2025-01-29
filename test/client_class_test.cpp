@@ -27,9 +27,9 @@ void changing_and_showing
     cout << "\n";
 
     cout << "================================================" << endl;
-    cout << "New Client name: " << client.get_client_name() << endl;
-    cout << "New Client description: " << client.get_client_description() << endl;
-    cout << "Is Client seller? -> " << client.is_client_seller() << endl;
+    cout << "New Client name: " << gn << client.get_client_name() << rst << endl;
+    cout << "New Client description: " << gn << client.get_client_description() << rst << endl;
+    cout << "Is Client seller? -> " << gn << client.is_client_seller() << rst << endl;
     cout << "\n";
 
 }
@@ -49,6 +49,8 @@ int main (){
     int seller = 1;
 
     while (1){
+        new_client.print_client_info();
+        cout << "\n";
         cout << "Enter new name: "; 
         getline(cin, name);
         cout << "Enter new description: ";

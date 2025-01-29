@@ -5,7 +5,7 @@
 #include <optional>
 
 
-bool is_valid_string (
+int is_valid_string (
     std::string input,
     std::string allowed_characters,
     int minimum_length,
