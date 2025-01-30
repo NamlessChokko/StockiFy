@@ -7,4 +7,4 @@
 
 std::string error_handler (std::string error_type, int error_number, std::string file_path);
 
-#endif 
+#endif // ERROR_HANDLER_H

@@ -16,4 +16,4 @@ int is_valid_string (
 
 std::string format(std::string input);
 
-#endif
+#endif // STRINGS_UTILS_H

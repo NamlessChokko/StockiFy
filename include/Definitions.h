@@ -32,4 +32,4 @@ constexpr char bg_wt[] = "\033[47m"; // White
 
 
 
-#endif
+#endif // DEFINITIONS_H

@@ -9,4 +9,4 @@
 std::optional<int> select_option (int number_of_options);
 
 
-#endif
+#endif // MENU_INTERACTIONS_H

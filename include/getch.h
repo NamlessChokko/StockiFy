@@ -44,4 +44,4 @@ char getch() {
 #endif
 }
 
-#endif 
+#endif // GETCH_H
