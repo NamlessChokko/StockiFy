@@ -27,9 +27,9 @@ class Option_Menu {
         void set_options(std::string quote, int index);
 
         std::string get_menu_name();
-        std::string get_menu_title();
-        std::string get_menu_subtitle();
-        std::string get_menu_body_paragraph();
+        std::string get_title();
+        std::string get_subtitle();
+        std::string get_body_paragraph();
         int get_options_count();
         std::string get_options(int index);
 

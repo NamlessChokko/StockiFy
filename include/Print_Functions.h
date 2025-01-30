@@ -3,6 +3,8 @@
 #define PRINTF_UNCTIONS_H
 #include <string>
 
-void print_Option_menu(Option_Menu menu);
+void Option_menu(Option_Menu menu);
+
+void Mini_Input_menu(minInput_Menu menu);
 
 #endif

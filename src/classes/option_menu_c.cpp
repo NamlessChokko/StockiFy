@@ -48,15 +48,15 @@ string Option_Menu::get_menu_name() {
     return menu_name;
 }
 
-string Option_Menu::get_menu_title() {
+string Option_Menu::get_title() {
     return menu_title;
 }
 
-string Option_Menu::get_menu_subtitle() {
+string Option_Menu::get_subtitle() {
     return menu_subtitle;
 }
 
-string Option_Menu::get_menu_body_paragraph() {
+string Option_Menu::get_body_paragraph() {
     return menu_body_paragraph;
 }
 
