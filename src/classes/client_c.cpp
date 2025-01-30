@@ -1,4 +1,4 @@
-#include "../../include/Client.h"
+#include "../../include/Client_c.h"
 #include "../../include/Strings_u.h"
 #include <iostream>
 #include <string>

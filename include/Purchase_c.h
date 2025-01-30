@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PURCHASE_H
 #define PURCHASE_H
 

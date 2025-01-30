@@ -1,5 +1,6 @@
-#ifndef UTILS_H
-#define UTILS_H
+#pragma once
+#ifndef MENU_INTERACTIONS_H
+#define MENU_INTERACTIONS_H
 
 #include <optional>
 #include <string>

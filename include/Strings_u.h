@@ -1,9 +1,8 @@
+#pragma once 
 #ifndef STRINGS_UTILS_H
 #define STRINGS_UTILS_H
 
 #include <string>
-#include <optional>
-
 
 int is_valid_string (
     std::string input,
@@ -15,5 +14,6 @@ int is_valid_string (
 
 );
 
+std::string format(std::string input);
 
 #endif

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef INPUT_UTILS_H
-#define INPUT_UTILS_H
+#ifndef GETCH_H
+#define GETCH_H
 
 // This code is IA generated using Deep Seek's DeepSeek-V3 model.
 // Model version: DeepSeek-V3

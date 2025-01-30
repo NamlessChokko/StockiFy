@@ -1,4 +1,4 @@
-#include "../../include/Purchase.h"
+#include "../../include/Purchase_c.h"
 #include <iostream>
 #include <string>
 

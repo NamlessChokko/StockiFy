@@ -1,3 +1,4 @@
+#pragma once
 #ifndef OPTION_MENU_C_H
 #define OPTION_MENU_C_H
 
