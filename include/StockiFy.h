@@ -6,7 +6,7 @@
 #include "Item_c.h"
 #include "Option_Menu_c.h"
 #include "Purchase_c.h"
-#include "Mini_Input_Menu_c.h"
+#include "Input_Menu_c.h"
 
 #include "Json_u.h"
 #include "Strings_u.h"

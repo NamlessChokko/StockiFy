@@ -8,7 +8,7 @@
 using namespace std;
 
 
-class minInput_Menu {
+class Input_Menu {
 private:
     string name;
     string title;
@@ -20,7 +20,7 @@ private:
 
 public:
 
-    minInput_Menu();
+    Input_Menu();
 
     void set_title(string new_title);
     void set_subtitle(string new_subtitle);

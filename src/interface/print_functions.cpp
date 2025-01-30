@@ -1,5 +1,5 @@
 #include "../../include/Option_Menu_c.h"
-#include "../../include/Mini_Input_Menu_c.h"
+#include "../../include/Input_Menu_c.h"
 #include "../../include/Definitions.h"
 #include <iostream>
 #include <string>
@@ -24,7 +24,7 @@ void Option_menu(Option_Menu menu){
 
 };
 
-void Mini_Input_menu(minInput_Menu menu){
+void Input_menu(Input_Menu menu){
     system("clear");
     cout << rst;
     cout << mg << menu.get_title() << rst << endl;  

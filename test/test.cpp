@@ -11,7 +11,7 @@ int main (){
     getcwd(cwd, sizeof(cwd));
     cout << bl << "Current working dir: " << rst << cwd << endl;
 
-    minInput_Menu menu;
+    Input_Menu menu;
     
     // Configurar el menú con datos de prueba
     menu.set_title("Name");
@@ -26,7 +26,7 @@ int main (){
     menu.set_input_requirements(format("No ^rdnumbers*rs allowed"), 2);
     
     // Llamar a la función para mostrar el menú
-    Mini_Input_menu(menu);
+    Input_menu(menu);
     std::cin.ignore();
 
 

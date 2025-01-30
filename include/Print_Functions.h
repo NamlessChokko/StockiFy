@@ -5,6 +5,6 @@
 
 void Option_menu(Option_Menu menu);
 
-void Mini_Input_menu(minInput_Menu menu);
+void Input_menu(Input_Menu menu);
 
 #endif
