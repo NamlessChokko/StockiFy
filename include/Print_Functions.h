@@ -9,4 +9,6 @@ void Input_menu(Input_Menu menu);
 
 void Error_screen(int error_code);
 
+void Info_menu(Info_Menu menu);
+
 #endif // PRINTF_UNCTIONS_H

@@ -15,7 +15,7 @@
 #include "Definitions.h"
 #include "Print_Functions.h"
 #include "Getch.h"
-#include "terminal_width.h"
+#include "Terminal_Width.h"
 
 
 #endif // STOCKIFY_H

@@ -1,5 +1,6 @@
 #include "../../include/Option_Menu_c.h"
 #include "../../include/Input_Menu_c.h"
+#include "../../include/Info_Menu_c.h"
 #include "../../include/Definitions.h"
 #include "../../include/Menu_Interactions.h"
 #include "../../include/Strings_u.h"
@@ -42,9 +43,20 @@ void Input_menu(Input_Menu menu){
 
 };
 
-void Error_screen(int error_code){
-    string code = error_handler(error_code);
+void Info_menu(Info_Menu menu){
     system("clear");
+    cout << rst;
+    cout << mg << menu.get_title() << rst << endl;  
+    cout << cn << menu.get_subtitle() << rst << endl;   
+    cout <<  menu.get_body_paragraph() << endl;
+    cout << menu.get_information_name() << endl;
+    cout << menu.get_information() << endl;
+
+};
+
+void Error_screen(int error_code){
+    system("clear");
+    string code = error_handler(error_code);
     cout << mg << "An error occurred." << rst << endl;
     cout << cn << "Error code: " << rd << "["<< error_code << "]" << rst << endl;
     cout << rst << format(code) << endl;
@@ -52,3 +64,4 @@ void Error_screen(int error_code){
     cin.ignore();
     system("clear");
 };
+
