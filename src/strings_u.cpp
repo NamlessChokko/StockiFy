@@ -38,28 +38,35 @@ int is_valid_string (
 ) {
 
 
-    if (static_cast<int>(input.length()) < minimum_length || static_cast<int>(input.length()) > maximum_length) {
-        return 1;
+    if (static_cast<int>(input.length()) < minimum_length) {
+        return 309;
+    }
+
+    if (static_cast<int>(input.length()) > maximum_length) {
+        return 310;
     }
 
     string allowed_characters = get_string(key, "json_db/allowed_characters.json");
 
     if (allowed_characters == "error") {
-        return 2;
+        return 304;
     }
 
     for (int i = 0; i < static_cast<int>(input.length()); i++) {
         if (allowed_characters.find(input[i]) == string::npos) {
-            return 3;
+            if (allowed_characters.find(input[i]) == ' ') {
+                return 308;
+            }
+            return 305;
         }
     }
 
     if (!end_space && input[input.length() - 1] == ' ') {
-        return 4;
+        return 306;
     }
 
     if (!start_space && input[0] == ' ') {
-        return 5;
+        return 307;
     }
 
     return 0;

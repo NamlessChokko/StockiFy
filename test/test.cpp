@@ -11,10 +11,9 @@ int main (){
     getcwd(cwd, sizeof(cwd));
     cout << bl << "Current working dir: " << rst << cwd << endl;
 
-    cout << getTerminalWidth() << endl;
+    Error_screen(308);
 
-
-    cout << "Press " << bl <<"ENTER " << rst << "to continue..." << endl;
+    cout << "Press " << bl <<"ENTER " << rst << "to continue...";
     std::cin.ignore();
     system("clear");
     return 0;

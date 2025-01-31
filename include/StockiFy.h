@@ -12,10 +12,9 @@
 #include "Strings_u.h"
 
 #include "Menu_Interactions.h"
-#include "Error_Handler.h"
 #include "Definitions.h"
 #include "Print_Functions.h"
-#include "getch.h"
+#include "Getch.h"
 #include "terminal_width.h"
 
 

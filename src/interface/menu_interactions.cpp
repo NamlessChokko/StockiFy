@@ -1,5 +1,5 @@
 #include "../../include/Menu_Interactions.h"
-#include "../../include/getch.h"
+#include "../../include/Getch.h"
 #include "../../include/Json_u.h"
 #include <string>
 #include <iostream>
@@ -15,20 +15,21 @@ string error_handler (
 }
 
 int validate_option (
+    char input,
     int number_of_options = 3,
     vector<char> options = {'1', '2', '3'}
 ){
     char option;
     try{
-        getch() >> option;
+        option = input;
     }
     catch (exception& e){   
-        return 1;
+        return 301;
     }
 
     for (int i = 0; i < number_of_options; i++){
         if (option == options[i]){
-            return 2;
+            return 302;
         }
     }
 

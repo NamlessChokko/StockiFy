@@ -2,6 +2,7 @@
 #include "../../include/Input_Menu_c.h"
 #include "../../include/Definitions.h"
 #include "../../include/Menu_Interactions.h"
+#include "../../include/Strings_u.h"
 #include <iostream>
 #include <string>
 #include <format>
@@ -44,10 +45,10 @@ void Input_menu(Input_Menu menu){
 void Error_screen(int error_code){
     string code = error_handler(error_code);
     system("clear");
-    cout << rd << "An error occurred." << rst << endl;
-    cout << rd << "Error code: " << "["<< code << "]" << rst << endl;
-    cout << code <<endl;
-    cout << "Press " << bl << "ENTER " << rst << "to continue..." << endl;
+    cout << mg << "An error occurred." << rst << endl;
+    cout << cn << "Error code: " << rd << "["<< error_code << "]" << rst << endl;
+    cout << rst << format(code) << endl;
+    cout << gn << "Press " << "ENTER " << "to continue..." << rst;
     cin.ignore();
     system("clear");
 };

@@ -8,8 +8,17 @@
     },
 
     "menu_input" : {
-        "301" : "Error in menu input selection, this is an unexpected error.",
-        "302" : "Inexistent option selected. Pleas try again "
+        "301" : "Error in menu option selection, this is an ^rdunexpected error*rs. please check directory: 'json_db/allowed_char.json' and the program documentation.",
+        "302" : "^rdInvalid input*rs. Please try again.",
+        "303" : "^rdInexistent option selected*rs. Pleas try again ",
+        "304" : "There was an error during the validation of the input. ^rdPlease check directory: 'json_db/allowed_char.json' and the program documentation.*rs",
+        "305" : "Invalid input: You ^rdentered an invalid character*rs. Please try again.",
+        "306" : "Invalid input: The input ^rdcan no start with an empty space*rs. Please try again.",
+        "307" : "Invalid input: The input ^rdcan no end with an empty space*rs. Please try again.",
+        "308" : "Invalid input: The input ^rdcan have not empty spaces*rs. Please try again.",
+        "309" : "Invalid input: The input have to be larger than the minimum character limit (too short). Please try again.",
+        "310" : "Invalid input: The input exceeds the character limit. Please try again."
+
     },
 
     "Interaction_permissions" : {
