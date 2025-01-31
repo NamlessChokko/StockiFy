@@ -14,6 +14,7 @@ class Option_Menu {
         std::string menu_body_paragraph;
         int options_count;
         std::vector<std::string> options;
+        std::vector<char> options_keys;
 
     public:
         Option_Menu();
@@ -25,6 +26,7 @@ class Option_Menu {
         void set_menu_body_paragraph(std::string _menu_body_paragraph);
         void set_options_count(int _options_count);
         void set_options(std::string quote, int index);
+        void set_options_keys(char key, int index);
 
         std::string get_menu_name();
         std::string get_title();
@@ -32,6 +34,7 @@ class Option_Menu {
         std::string get_body_paragraph();
         int get_options_count();
         std::string get_options(int index);
+        std::vector<char> get_options_keys();
 
         void clean_menu();
 };

@@ -8,8 +8,8 @@
     },
 
     "menu_input" : {
-        "301" : "Invalid option selected",
-        "302" : "Inexistent option selected"
+        "301" : "Error in menu input selection, this is an unexpected error.",
+        "302" : "Inexistent option selected. Pleas try again "
     },
 
     "Interaction_permissions" : {
@@ -28,6 +28,5 @@
     "client_input" : {
         "701" : "Invalid input for client name, please enter a valid name.",
         "702" : "Invalid input for client description, please enter a valid description"
-
     }
 }

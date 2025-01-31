@@ -1,27 +1,39 @@
-#include "../include/Menu_Interactions.h"
+#include "../../include/Menu_Interactions.h"
+#include "../../include/getch.h"
+#include "../../include/Json_u.h"
 #include <string>
-#include <optional>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 
-optional<int> select_option (
-    int number_of_options = 3
+string error_handler (
+    int error_number
 ){
-    int option;
+    return  read_error_message(error_number, "json_db/expected_errors.json");
+}
 
+int validate_option (
+    int number_of_options = 3,
+    vector<char> options = {'1', '2', '3'}
+){
+    char option;
     try{
-        cin >> option;
+        getch() >> option;
     }
     catch (exception& e){   
-        return nullopt;
+        return 1;
     }
 
-    if (option < 1 || option > number_of_options){
-        return nullopt;
+    for (int i = 0; i < number_of_options; i++){
+        if (option == options[i]){
+            return 2;
+        }
     }
 
-    return option;
-
+    return 0;
 }
+
+
+

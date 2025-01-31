@@ -1,6 +1,7 @@
 #include "../../include/Option_Menu_c.h"
 #include "../../include/Input_Menu_c.h"
 #include "../../include/Definitions.h"
+#include "../../include/Menu_Interactions.h"
 #include <iostream>
 #include <string>
 #include <format>
@@ -40,5 +41,13 @@ void Input_menu(Input_Menu menu){
 
 };
 
-
-// Fix methods names 
+void Error_screen(int error_code){
+    string code = error_handler(error_code);
+    system("clear");
+    cout << rd << "An error occurred." << rst << endl;
+    cout << rd << "Error code: " << "["<< code << "]" << rst << endl;
+    cout << code <<endl;
+    cout << "Press " << bl << "ENTER " << rst << "to continue..." << endl;
+    cin.ignore();
+    system("clear");
+};

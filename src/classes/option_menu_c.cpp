@@ -68,5 +68,9 @@ string Option_Menu::get_options(int index) {
     return options[index];
 }
 
+vector<char> Option_Menu::get_options_keys() {
+    return options_keys;
+}
+
 
 

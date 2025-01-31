@@ -6,9 +6,9 @@
 #include <string>
 #include "../lib/nlohmann/json.hpp"
 
-std::optional<std::string> get_string(std::string file_path, std::string key);
+std::string get_string(std::string key, std::string file_path);
 
-std::optional<std::string> read_error_message(std::string file_path, std::string erro_type, int error_number);
+std::string read_error_message(int error_number, std::string file_path);
 
 
 #endif // JSON_U_H

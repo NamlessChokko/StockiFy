@@ -1,15 +1,18 @@
+#include "../lib/nlohmann/json.hpp"
+#include "../include/Json_u.h"
 #include <string>
 #include <optional>
 #include <iostream>
 #include <fstream>
-#include "../include/Json_u.h"
-#include "../lib/nlohmann/json.hpp"
 
 using namespace std;
 using namespace nlohmann;
+const string default_char_in_case_of_error = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+const string default_file_path = "json_db/expected_errors.json";
+const string default_file_path = "json_db/expected_errors.json";
 
 
-optional<string> get_string(string file_path, string key) {
+string get_string(string key, string file_path = default_file_path) {
     json json_file;
 
     try {
@@ -17,23 +20,18 @@ optional<string> get_string(string file_path, string key) {
         file >> json_file;
         file.close();
     } catch (json::parse_error& e) {
-        cout << "Error[001]: " << e.what() << endl;
-        cout << "Could not open file: " << file_path << endl;
-        cout << "With key: " << key << endl;
-        cout << "This is a unexpected error, please check documentation for more information" << endl;
-        cout << "Exiting..." << endl;
-        exit(1);
+        return default_char_in_case_of_error;
     }
 
     if (json_file.find(key) == json_file.end()) {
-        return nullopt;
+        return default_char_in_case_of_error;
     }
 
     return json_file[key];
 }
 
-optional<string> read_error_message(string file_path, string error_type, int error_number){
-
+string read_error_message(int error_number, string file_path = default_file_path) {
+    string error_type = "";
     json json_file;
     string key = to_string(error_number); 
 
@@ -42,13 +40,16 @@ optional<string> read_error_message(string file_path, string error_type, int err
         file >> json_file;
         file.close();
     } catch (json::parse_error& e) {;
-        cout << "Error[002]: " << e.what() << endl;
-        cout << "Could not open file: " << file_path << endl;
-        cout << "This is a unexpected error, please check documentation for more information" << endl;
-        cout << "Exiting..." << endl;
-        exit(1);
+        return "An unexpected error occurred. Please, check directory json_db/expected_errors.json";
     }
 
 
-    return json_file[error_type][key];
+
+    for (auto& error_type : json_file.items()) {
+        if (error_type.key() == key) {
+            return error_type.value();
+        }
+    }
+
+    return "An unexpected error occurred. Please, check directory json_db/expected_errors.json";
 }

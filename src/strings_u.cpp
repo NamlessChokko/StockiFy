@@ -5,7 +5,6 @@
 
 using namespace std;
 
-const string default_file_path = "json_db/allowed_char.json";
 unordered_map<string, string> colors = {
     {"*rs", rst},
     {"^bk", bk},
@@ -43,13 +42,11 @@ int is_valid_string (
         return 1;
     }
 
-    optional<string> opt_allowed_characters = get_string(default_file_path, key);
+    string allowed_characters = get_string(key, "json_db/allowed_characters.json");
 
-    if (!opt_allowed_characters.has_value()) {
+    if (allowed_characters == "error") {
         return 2;
     }
-
-    string allowed_characters = opt_allowed_characters.value();
 
     for (int i = 0; i < static_cast<int>(input.length()); i++) {
         if (allowed_characters.find(input[i]) == string::npos) {
