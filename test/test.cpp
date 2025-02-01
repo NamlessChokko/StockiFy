@@ -11,10 +11,25 @@ int main (){
     getcwd(cwd, sizeof(cwd));
     cout << bl << "Current working dir: " << rst << cwd << endl;
 
-    Error_screen(308);
+    Info_Menu menu;
+    
+    // Configurar el menú con datos de prueba
+    menu.set_title("Main Menu");
+    menu.set_subtitle("Valance Information");
+    menu.set_body_paragraph("This is your valance information.");
+    menu.set_information_name("Your current valance is");
+    menu.set_information("1000");
+    
+    // Llamar a la función para mostrar el menú
+    Info_menu(menu);
 
-    cout << "Press " << bl <<"ENTER " << rst << "to continue...";
-    std::cin.ignore();
+
+    cout << rst;
+    getch();
+
+    Error_screen(1023);
+
+
     system("clear");
     return 0;
 }

@@ -16,8 +16,8 @@
         "306" : "Invalid input: The input ^rdcan no start with an empty space*rs. Please try again.",
         "307" : "Invalid input: The input ^rdcan no end with an empty space*rs. Please try again.",
         "308" : "Invalid input: The input ^rdcan have not empty spaces*rs. Please try again.",
-        "309" : "Invalid input: The input have to be larger than the minimum character limit (too short). Please try again.",
-        "310" : "Invalid input: The input exceeds the character limit. Please try again."
+        "309" : "Invalid input: The input ^rdhave to be larger*rs than the minimum character limit (too short). Please try again.",
+        "310" : "Invalid input: The input ^rdexceeds the character limit*rs. Please try again."
 
     },
 
