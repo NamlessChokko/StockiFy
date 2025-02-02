@@ -7,6 +7,7 @@
 
 using namespace std;
 
+
 constexpr char rst[] = "\033[0m"; // Reset 
 
 // Font colors:
@@ -28,8 +29,6 @@ constexpr char bg_bl[] = "\033[44m"; // Blue
 constexpr char bf_mg[] = "\033[45m"; // Magenta
 constexpr char bf_cn[] = "\033[46m"; // Cyan 
 constexpr char bg_wt[] = "\033[47m"; // White
-
-
 
 
 #endif // DEFINITIONS_H

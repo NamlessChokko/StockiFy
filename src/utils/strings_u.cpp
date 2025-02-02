@@ -1,7 +1,7 @@
-#include "../include/Strings_u.h"
-#include "../include/Json_u.h"
-#include "../include/Definitions.h"
-#include "../include/Terminal_Width.h"
+#include "../../include/Strings_u.h"
+#include "../../include/Json_u.h"
+#include "../../include/Definitions.h"
+#include "../../include/Terminal_u.h"
 #include <string>
 
 using namespace std;
@@ -141,5 +141,5 @@ vector<string> adj_to_width (string input) {
 }
 
 
-
+// TODO: Fix adj_to_width function to handle multiple spaces between long words
 // TODO: implement settings to find json file path 
