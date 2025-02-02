@@ -1,6 +1,7 @@
 #include "../include/Strings_u.h"
 #include "../include/Json_u.h"
 #include "../include/Definitions.h"
+#include "../include/Terminal_Width.h"
 #include <string>
 
 using namespace std;
@@ -76,8 +77,6 @@ string format(string input) {
     string formatted = "";
     int key_length = 3;
 
-
-
     for (int i = 0; i < static_cast<int>(input.length()); i++) {
         if ((input[i] == '^' || input[i] == '#' || input[i] == '*') && (i == 0 || input[i - 1] != '\\')) {
             if (i + key_length <= static_cast<int>(input.length())) {
@@ -94,5 +93,53 @@ string format(string input) {
 
     return formatted;
 }
+
+vector<string> adj_to_width (string input) {
+    vector<string> lines; 
+    int input_length = static_cast<int>(input.length());
+    int width = getTerminalWidth();
+    int last_space = 0;
+    char empty_space = ' ';
+
+    for (int i = 0; i < input_length; i++) {
+
+        if (input_length <= width) { // if the input length is less than the width, add the input to the lines vector and break the loop
+            lines.push_back(input);
+            break;
+        } else {
+            if (input_length == 0) { // if the input length is 0, break the loop
+                break;
+            }
+        }
+
+        
+        if (input[i] == empty_space) { // if the current character is a space, save the index
+            last_space = i;
+        }
+
+        if (i >= width && last_space == 0) { // if the current index is equal to the width and the last space is 0
+            lines.push_back(input.substr(0, width - 1)); // add the substring from the beginning to the width to the lines vector
+            input = input.substr(width - 1); // set the input to the substring from the width to the end
+            i = 0;
+            input_length = static_cast<int>(input.length()); // set the input length to the length of the new input
+            last_space = 0;
+        }
+
+        if (i == width && last_space < width){ // if the current index is equal to the width and the last space is less than the width
+            lines.push_back(input.substr(0, last_space)); // add the substring from the beginning to the last space to the lines vector
+            input = input.substr(last_space + 1); // set the input to the substring from the last space to the end
+            i = 0;
+            input_length = static_cast<int>(input.length()); // set the input length to the length of the new input
+            last_space = 0;
+        }
+
+        
+
+    }
+
+    return lines; // return the lines vector
+}
+
+
 
 // TODO: implement settings to find json file path 
