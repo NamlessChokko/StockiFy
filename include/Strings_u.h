@@ -18,7 +18,7 @@ int is_valid_string (
 
 std::string format(std::string input);
 
-std::vector<std::string> adj_to_width (std::string input);
+std::vector<std::string> adj_to_width (std::string input, int width);
 
 
 #endif // STRINGS_UTILS_H

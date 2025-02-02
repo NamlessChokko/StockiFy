@@ -94,10 +94,9 @@ string format(string input) {
     return formatted;
 }
 
-vector<string> adj_to_width (string input) {
+vector<string> adj_to_width (string input, int width) {
     vector<string> lines; 
     int input_length = static_cast<int>(input.length());
-    int width = getTerminalWidth();
     int last_space = 0;
     char empty_space = ' ';
 

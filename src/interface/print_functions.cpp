@@ -4,7 +4,7 @@
 #include "../../include/Definitions.h"
 #include "../../include/Menu_Interactions.h"
 #include "../../include/Strings_u.h"
-#include "../../include/Getch.h"
+#include "../../include/Terminal_u.h"
 #include <iostream>
 #include <string>
 #include <format>
@@ -12,21 +12,28 @@
 using namespace std;
 
 
+void printF(string input, string color, int width){
+    if (input != ""){
+        cout << mg;
+        vector<string> text = adj_to_width(input, width);
+        for (int i = 0; i < text.size(); i++){
+            cout << text[i] << endl;
+        }
+        cout << rst;
+    }
+
+};
+
 void Option_menu(Option_Menu menu){
     system("clear");
     cout << rst;
+    int width  = getTerminalWidth();
     
-    if (menu.get_title() != ""){
-        cout << mg << menu.get_title() << rst << endl;  
-    }
+    printF(menu.get_title(), mg, width);
 
-    if (menu.get_subtitle() != ""){
-        cout << cn << menu.get_subtitle() << rst << endl;   
-    }
+    printF(menu.get_subtitle(), cn, width);
 
-    if (menu.get_body_paragraph() != ""){
-        cout << menu.get_body_paragraph() << endl;
-    }
+    printF(menu.get_body_paragraph(), rst, width);
 
     cout << endl;
     cout << cn << "Options:" << rst << endl;
