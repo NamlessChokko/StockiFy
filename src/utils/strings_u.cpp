@@ -95,12 +95,13 @@ string format(string input) {
 }
 
 vector<string> adj_to_width (string input, int width) {
-    vector<string> lines; 
-    int input_length = static_cast<int>(input.length());
+    vector<string> lines;
+    string line = ""; 
+    long input_length = static_cast<int>(input.length());
     int last_space = 0;
     char empty_space = ' ';
 
-    for (int i = 0; i < input_length; i++) {
+    for (int i = 0; i < static_cast<int>(input_length); i++) {
 
         if (input_length <= width) { // if the input length is less than the width, add the input to the lines vector and break the loop
             lines.push_back(input);
@@ -116,19 +117,23 @@ vector<string> adj_to_width (string input, int width) {
             last_space = i;
         }
 
-        if (i >= width && last_space == 0) { // if the current index is equal to the width and the last space is 0
-            lines.push_back(input.substr(0, width - 1)); // add the substring from the beginning to the width to the lines vector
+        if (i >= width && last_space == 0) { // if the current index is equal to the width and the last space is 
+            string empty_spaces(width - input.size(), empty_space); 
+            line = input.substr(0, input.size() - 1) + empty_spaces;
+            lines.push_back(line); // add the substring from the beginning to the width to the lines vector
             input = input.substr(width - 1); // set the input to the substring from the width to the end
             i = 0;
-            input_length = static_cast<int>(input.length()); // set the input length to the length of the new input
+            input_length = input.length(); // set the input length to the length of the new input
             last_space = 0;
         }
 
         if (i == width && last_space < width){ // if the current index is equal to the width and the last space is less than the width
-            lines.push_back(input.substr(0, last_space)); // add the substring from the beginning to the last space to the lines vector
+            string empty_spaces(width - last_space, empty_space); // create a string of empty spaces
+            line = input.substr(0, last_space) + empty_spaces; // set the line to the substring from the beginning to the last space plus the empty spaces
+            lines.push_back(line); // add the substring from the beginning to the last space to the lines vector
             input = input.substr(last_space + 1); // set the input to the substring from the last space to the end
             i = 0;
-            input_length = static_cast<int>(input.length()); // set the input length to the length of the new input
+            input_length = input.length(); // set the input length to the length of the new input
             last_space = 0;
         }
 

@@ -20,10 +20,10 @@ class Option_Menu {
         Option_Menu();
         ~Option_Menu();
 
-        void set_menu_name(std::string _menu_name);
-        void set_menu_title(std::string _menu_title);
-        void set_menu_subtitle(std::string _menu_subtitle);
-        void set_menu_body_paragraph(std::string _menu_body_paragraph);
+        void set_name(std::string _menu_name);
+        void set_title(std::string _menu_title);
+        void set_subtitle(std::string _menu_subtitle);
+        void set_body_paragraph(std::string _menu_body_paragraph);
         void set_options_count(int _options_count);
         void set_options(std::string quote, int index);
         void set_options_keys(char key, int index);
@@ -34,7 +34,7 @@ class Option_Menu {
         std::string get_body_paragraph();
         int get_options_count();
         std::string get_options(int index);
-        std::vector<char> get_options_keys();
+        char get_options_keys(int index);
 
         void clean_menu();
 };

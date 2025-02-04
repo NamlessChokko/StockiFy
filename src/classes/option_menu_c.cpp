@@ -18,29 +18,34 @@ Option_Menu::Option_Menu() {
 Option_Menu::~Option_Menu() {}
 
 
-void Option_Menu::set_menu_name(string _menu_name) {
+void Option_Menu::set_name(string _menu_name) {
     menu_name = _menu_name;
 }
 
-void Option_Menu::set_menu_title(string _menu_title) {
+void Option_Menu::set_title(string _menu_title) {
     menu_title = _menu_title;
 }
 
-void Option_Menu::set_menu_subtitle(string _menu_subtitle) {
+void Option_Menu::set_subtitle(string _menu_subtitle) {
     menu_subtitle = _menu_subtitle;
 }
 
-void Option_Menu::set_menu_body_paragraph(string _menu_body_paragraph) {
+void Option_Menu::set_body_paragraph(string _menu_body_paragraph) {
     menu_body_paragraph = _menu_body_paragraph;
 }
 
 void Option_Menu::set_options_count(int _options_count) {
     options_count = _options_count;
     options.resize(options_count);
+    options_keys.resize(options_count);
 }
 
 void Option_Menu::set_options(string quote, int index) {
     options[index] = quote;
+}
+
+void Option_Menu::set_options_keys(char key, int index) {
+    options_keys[index] = key;
 }
 
 
@@ -68,8 +73,8 @@ string Option_Menu::get_options(int index) {
     return options[index];
 }
 
-vector<char> Option_Menu::get_options_keys() {
-    return options_keys;
+char Option_Menu::get_options_keys(int index) {
+    return options_keys[index];
 }
 
 

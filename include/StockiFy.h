@@ -2,6 +2,14 @@
 #ifndef STOCKIFY_H
 #define STOCKIFY_H
 
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+#include <unordered_map>
+#include <optional>
+
 #include "Client_c.h"
 #include "Item_c.h"
 #include "Option_Menu_c.h"
@@ -16,7 +24,6 @@
 #include "Menu_Interactions.h"
 #include "Definitions.h"
 #include "Print_Functions.h"
-
 
 
 #endif // STOCKIFY_H
