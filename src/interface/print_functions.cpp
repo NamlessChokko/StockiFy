@@ -8,67 +8,63 @@
 #include <iostream>
 #include <string>
 #include <format>
+#include <unistd.h>
 
 using namespace std;
 
 
-void printL(string input, string color, int width){
+void printL(string input, string color, size_t width){
     if (input != ""){
         cout << color;
-        vector<string> text = adj_to_width(input, width - 2);
-        string empty_spaces(width - 2 - (text[text.size() - 1].size()), ' ');
-        for (int i = 0; i < static_cast<int>(text.size()); i++){
-            
-            if (i == static_cast<int>(text.size()) - 1){
-                cout << '|' << text[i] << empty_spaces <<  '|' << endl;
-                break;
-            }
+        vector<string> text = adj_to_width(input, width - 2, true, ' ');
+        string empty_spaces(width - (text[text.size() - 1].size()) - 2, ' ');
+        
 
 
-            cout << '|' << text[i] << '|' << endl;
+        for (int i = 0; i < static_cast<int>(text.size()); i++){            
+            cout << cn << '|' << color << text[i] << empty_spaces << cn << '|' << endl;
         }
         cout << rst;
     }
-
 };
 
-void printC(string input, string color, int width){
+void printC(string input, string color, size_t width){
     int empty_spaces = width - input.length();
     empty_spaces = empty_spaces / 2;
+    string left(empty_spaces, ' ');
+    string right(width - left.length() - input.length() - 2, ' '); 
 
-    cout << '|';
-    for (int i = 0; i < empty_spaces - 1; i++){
-        cout << " ";
-    }
-
-    cout << color << input << rst; 
-
-    for (int i = 0; i < empty_spaces - 1; i++){
-        cout << " ";
-    }
-    cout << '|' << endl;
+    cout << cn << '|';
+    cout << color << left << input << right << rst; 
+    cout << cn << '|' << rst << endl;
 };
 
-void Option_menu(Option_Menu menu){
+void Option_menu(Option_Menu menu, string border_color){
+    int width  = getTerminalWidth();
+    string strong_line(width - 2, '=');
+    string light_line(width - 2, '-');
+    char edge = '+';
+
     system("clear");
     cout << rst;
-    int width  = getTerminalWidth();
-    
-    cout << "+";
-    for (int i = 0; i < width - 2; i++){
-        cout << "-";
-    }
-    cout << "+" << endl;
+
+    cout << rd << edge << border_color << strong_line << rd << edge << rst << endl;
 
     printC(menu.get_title(), mg, width);
     printC(menu.get_subtitle(), cn, width);
     printL(format(menu.get_body_paragraph()), rst, width);
+    cout << rd << edge << border_color << light_line << rd << edge << rst;
 
-    cout << endl;
-    cout << cn << "Options:" << rst << endl;
+    
+    cout << "\n";
+    string empty_spaces(width - 14, ' ');
+    cout << border_color << "|" << mg << "# - "  << "Options:" << empty_spaces << border_color << "|" << rst << endl;
     for (int i = 0; i < menu.get_options_count(); i++){
-        cout << gn << "[" << menu.get_options_keys(i) << "]" << "-> " << rst  << menu.get_options(i) << rst << endl;
+        string empty_spaces(width - menu.get_options(i).size() - 10, ' ');
+        cout << border_color << "|" << cn << "  [" << menu.get_options_keys(i) << "]" << "-> " << gn << menu.get_options(i) << empty_spaces << border_color << "|" << rst << endl;
     }
+    cout << rd << edge << border_color << strong_line << rd << edge;
+    cout << endl;
     cout << gn << ">>> ";
 
 };

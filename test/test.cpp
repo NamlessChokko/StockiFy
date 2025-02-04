@@ -10,6 +10,7 @@
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
 #include <iostream>
+#include <unistd.h>
 
 
 
@@ -34,12 +35,10 @@ int main (){
     menu.set_options_keys('O', 1);
     menu.set_options_keys('E', 2);
 
+    Option_menu(menu, cn);
 
-    Option_menu(menu);
+
     cin.ignore();
-
-
-    // cin.ignore();
     system("clear");
     return 0;
 }

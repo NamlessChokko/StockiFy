@@ -94,54 +94,49 @@ string format(string input) {
     return formatted;
 }
 
-vector<string> adj_to_width (string input, int width) {
+vector<string> adj_to_width(
+    string input, 
+    size_t width, 
+    bool fill, 
+    char empty_space
+) {
     vector<string> lines;
-    string line = ""; 
-    long input_length = static_cast<int>(input.length());
-    int last_space = 0;
-    char empty_space = ' ';
-
-    for (int i = 0; i < static_cast<int>(input_length); i++) {
-
-        if (input_length <= width) { // if the input length is less than the width, add the input to the lines vector and break the loop
-            lines.push_back(input);
-            break;
-        } else {
-            if (input_length == 0) { // if the input length is 0, break the loop
-                break;
-            }
-        }
-
-        
-        if (input[i] == empty_space) { // if the current character is a space, save the index
-            last_space = i;
-        }
-
-        if (i >= width && last_space == 0) { // if the current index is equal to the width and the last space is 
-            string empty_spaces(width - input.size(), empty_space); 
-            line = input.substr(0, input.size() - 1) + empty_spaces;
-            lines.push_back(line); // add the substring from the beginning to the width to the lines vector
-            input = input.substr(width - 1); // set the input to the substring from the width to the end
-            i = 0;
-            input_length = input.length(); // set the input length to the length of the new input
-            last_space = 0;
-        }
-
-        if (i == width && last_space < width){ // if the current index is equal to the width and the last space is less than the width
-            string empty_spaces(width - last_space, empty_space); // create a string of empty spaces
-            line = input.substr(0, last_space) + empty_spaces; // set the line to the substring from the beginning to the last space plus the empty spaces
-            lines.push_back(line); // add the substring from the beginning to the last space to the lines vector
-            input = input.substr(last_space + 1); // set the input to the substring from the last space to the end
-            i = 0;
-            input_length = input.length(); // set the input length to the length of the new input
-            last_space = 0;
-        }
-
-        
-
+    string line;
+    size_t input_length = input.length();
+    
+    if (input_length <= width) {
+        string empty_spaces(width - input_length, empty_space);
+        line = (!fill)? input : input + empty_spaces;  
+        lines.push_back(line);
+        return lines;
     }
 
-    return lines; // return the lines vector
+    size_t start = 0;
+    
+    while (start < input_length) {
+        size_t end = start + width;
+
+        if (end >= input_length) {
+            string empty_spaces(width - (input_length - start), empty_space);
+            line = (!fill) ? input.substr(start) : input.substr(start) + empty_spaces;
+            lines.push_back(line);
+            break;
+        }
+
+        size_t last_space = input.rfind(' ', end);
+        
+        if (last_space == string::npos || last_space < start) {
+            last_space = end;
+        }
+
+        string empty_spaces(width - (last_space - start), empty_space); 
+        line = (!fill)? input.substr(start, last_space - start) : input.substr(start, last_space - start) + empty_spaces;
+        lines.push_back(line);
+
+        start = last_space + 1;
+    }
+
+    return lines;
 }
 
 

@@ -8,7 +8,10 @@ void printL(string input, string color, int width);
 
 void printC(string input, string color, int width);
 
-void Option_menu(Option_Menu menu);
+void Option_menu(
+Option_Menu menu, 
+string border_color = cn
+);
 
 void Input_menu(Input_Menu menu);
 
