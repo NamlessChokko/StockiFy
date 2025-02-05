@@ -23,23 +23,19 @@ int main (){
     cout << bl << "Current working dir: " << rst << cwd << endl;
     cout << endl;
 
-    Option_Menu menu;
+    Info_Menu menu;
     menu.set_title("Main Menu");
     menu.set_subtitle("Welcome to testing screen");
     menu.set_body_paragraph("This program is a test of functions that bla bla bla because the demand of pollos is increasing cuz the immigrants and we dont have access to de information given by the baby shark tu tu dudu tutu.");
-    menu.set_options_count(3);
-    menu.set_options("Play", 0);
-    menu.set_options("Options", 1);
-    menu.set_options("Exit", 2);
-    menu.set_options_keys('P', 0);
-    menu.set_options_keys('O', 1);
-    menu.set_options_keys('E', 2);
+    menu.set_information_name("Information name");
+    menu.set_information("Important Information");
 
-    Option_menu(menu, cn);
-
+    Info_menu(menu, cn);
 
     cin.ignore();
+    cout << rst;
     system("clear");
+    cout << rst << bg_bk;
     return 0;
 }
 

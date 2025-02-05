@@ -29,14 +29,16 @@ void printL(string input, string color, size_t width){
 };
 
 void printC(string input, string color, size_t width){
-    int empty_spaces = width - input.length();
-    empty_spaces = empty_spaces / 2;
-    string left(empty_spaces, ' ');
-    string right(width - left.length() - input.length() - 2, ' '); 
+    if (input != ""){ 
+        int empty_spaces = width - input.length();
+        empty_spaces = empty_spaces / 2;
+        string left(empty_spaces, ' ');
+        string right(width - left.length() - input.length() - 2, ' '); 
 
-    cout << cn << '|';
-    cout << color << left << input << right << rst; 
-    cout << cn << '|' << rst << endl;
+        cout << cn << '|';
+        cout << color << left << input << right << rst; 
+        cout << cn << '|' << rst << endl;
+    }
 };
 
 void Option_menu(Option_Menu menu, string border_color){
@@ -69,37 +71,57 @@ void Option_menu(Option_Menu menu, string border_color){
 
 };
 
-void Input_menu(Input_Menu menu){
+void Input_menu(Input_Menu menu, string border_color){
+    int width  = getTerminalWidth();
+    string strong_line(width - 2, '=');
+    string light_line(width - 2, '-');
+    char edge = '+';
+
     system("clear");
     cout << rst;
-    int width  = getTerminalWidth();
-    
+
+    cout << rd << edge << border_color << strong_line << rd << edge << rst << endl;
+
     printC(menu.get_title(), mg, width);
     printC(menu.get_subtitle(), cn, width);
     printL(format(menu.get_body_paragraph()), rst, width);
+    cout << rd << edge << border_color << light_line << rd << edge << rst;
+
 
     cout << endl;
-    cout << cn << "Requirements: " << rst << endl;
+    string empty_spaces(width - 19, ' ');
+    cout << border_color << "|" << mg << "# - "  << "Requirements:" << empty_spaces << border_color << "|" << rst << endl;
     for (int i = 0; i < menu.get_requirements_count(); i++){
-        cout << rd << "@" << "-> " << rst  << menu.get_input_requirement(i) << rst << endl;
+        string empty_spaces(width - menu.get_input_requirement(i).size() - 8, ' ');
+        cout << border_color << "|" << cn << "  @" << "-> " << rd << menu.get_input_requirement(i) << empty_spaces << border_color << "|" << rst << endl;
     }
+    cout << rd << edge << border_color << strong_line << rd << edge;
+    cout << endl;
     cout << gn << menu.get_input_name() << ": " << bk << bg_wt;
 
 
 };
 
-void Info_menu(Info_Menu menu){
+void Info_menu(Info_Menu menu, string border_color){
+    int width  = getTerminalWidth();
+    string strong_line(width - 2, '=');
+    string light_line(width - 2, '-');
+    char edge = '+';
+
     system("clear");
     cout << rst;
-    int width  = getTerminalWidth();
-    
+
+    cout << rd << edge << border_color << strong_line << rd << edge << rst << endl;
     printC(menu.get_title(), mg, width);
     printC(menu.get_subtitle(), cn, width);
     printL(format(menu.get_body_paragraph()), rst, width);
-
-    cout << endl;
-    cout << rst << menu.get_information_name() << ": ";
-    cout << cn << menu.get_information() << rst << endl;
+    string _empty_spaces(width - 2, ' ');
+    cout << cn << "|" << _empty_spaces << "|";
+    string empty_spaces(width - menu.get_information_name().length() - 3, ' ');
+    cout << border_color << "|" << mg << menu.get_information_name() << ":" << empty_spaces << border_color << "|";
+    printL(menu.get_information(), rst, width);
+    cout << rd << edge << border_color << strong_line << rd << edge << rst << endl;
+    
     cout << gn << "Press " << "ENTER " << "to continue..." << rst;
 
 };
@@ -119,3 +141,5 @@ void Error_screen(int error_code){
     system("clear");
 };
 
+
+// TODO: Fix: string empty_spaces(width - menu.get_options(i).size() - 10, ' '); << This trow an error when when width is less than line length
