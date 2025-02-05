@@ -21,6 +21,7 @@ void printL(string input, string color, size_t width){
         
 
 
+
         for (int i = 0; i < static_cast<int>(text.size()); i++){            
             cout << cn << '|' << color << text[i] << empty_spaces << cn << '|' << endl;
         }
@@ -128,17 +129,24 @@ void Info_menu(Info_Menu menu, string border_color){
 
 void Error_screen(int error_code){
     system("clear");
+    cout << rst;
     string code = error_handler(error_code);
     int width = getTerminalWidth();
+    string strong_line(width - 2, '=');
+    string light_line(width - 2, '-');
+    char edge = '+';
 
     error_code = (code == "An unexpected error occurred. Please, check directory json_db/expected_errors.json.") ? 1 : error_code;
 
-    cout << mg << "An error occurred." << rst << endl;
-    cout << cn << "Error code: " << rd << "["<< error_code << "]" << rst << endl;
-    printL(format(code), rst, width);
-    cout << gn << "Press " << "ENTER " << "to continue..." << rst;
-    getch();
-    system("clear");
+
+    cout << rd << edge << cn << strong_line << rd << edge << endl;
+    printC("Error Screen", mg, width);
+    printL("An error occurred.", rd, width);
+    printL(format("Error code: ["+ to_string(error_code) + "]"), rd, width);
+    printL(format(code), rd, width);
+    cout << rd << edge << cn << strong_line << rd << edge << endl;
+    cout << gn << "Press ENTER to continue...";
+
 };
 
 

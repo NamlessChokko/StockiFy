@@ -23,14 +23,10 @@ int main (){
     cout << bl << "Current working dir: " << rst << cwd << endl;
     cout << endl;
 
-    Info_Menu menu;
-    menu.set_title("Main Menu");
-    menu.set_subtitle("Welcome to testing screen");
-    menu.set_body_paragraph("This program is a test of functions that bla bla bla because the demand of pollos is increasing cuz the immigrants and we dont have access to de information given by the baby shark tu tu dudu tutu.");
-    menu.set_information_name("Information name");
-    menu.set_information("Important Information");
+    Error_screen(305);
 
-    Info_menu(menu, cn);
+
+
 
     cin.ignore();
     cout << rst;
