@@ -23,10 +23,11 @@ int main (){
     cout << bl << "Current working dir: " << rst << cwd << endl;
     cout << endl;
 
-    Error_screen(305);
-
-
-
+    while (1){
+        cout << ">>> "; 
+        char arrow = get_arrow();
+        cout << "Your pressed: " << arrow << endl; 
+    }
 
     cin.ignore();
     cout << rst;

@@ -37,4 +37,38 @@ int validate_option (
 }
 
 
+char get_arrow(){
+    char scape = getch();
+    if (scape != 033){
+        return ' ';
+    }
+
+    char square = getch();
+    if (square != 91){
+        return ' ';
+    }
+
+    char arrow = getch();
+    if (arrow != 'A' && arrow != 'B' && arrow != 'D' && arrow != 'C'){
+        return ' ';
+    }
+
+    string code = to_string(scape) + square + arrow;
+
+    cout << '\n' << code << endl;
+
+    if (code == "27[A") {
+        return 'w';
+    } else if (code == "27[B") {
+        return 's';
+    } else if (code == "27[D") {
+        return 'a';
+    } else if (code == "27[C") {
+        return 'd';
+    } else {return ' ';}
+
+    return ' ';
+}
+
+
 
