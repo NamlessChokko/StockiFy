@@ -6,7 +6,8 @@
 #include <vector>
 
 using namespace std;
-
+const int ESC = 033;
+const int SQR_BRCKT = 91;
 
 string error_handler (
     int error_number
@@ -38,36 +39,31 @@ int validate_option (
 
 
 char get_arrow(){
-    char scape = getch();
-    if (scape != 033){
+    if (getch() != ESC){ // If it is not the scape character, then return a empty value
         return ' ';
     }
 
-    char square = getch();
-    if (square != 91){
+    if (getch() != SQR_BRCKT){
         return ' ';
     }
 
-    char arrow = getch();
-    if (arrow != 'A' && arrow != 'B' && arrow != 'D' && arrow != 'C'){
-        return ' ';
-    }
-
-    string code = to_string(scape) + square + arrow;
-
-    cout << '\n' << code << endl;
-
-    if (code == "27[A") {
+    char arrow = getch(); // Get tha actual arrow value represented in letters (A = up, B = down, C = right, D = left) 
+    
+    if (arrow == 'A'){
         return 'w';
-    } else if (code == "27[B") {
+    } else if (arrow == 'B'){
         return 's';
-    } else if (code == "27[D") {
-        return 'a';
-    } else if (code == "27[C") {
+    } else if (arrow == 'C'){
         return 'd';
-    } else {return ' ';}
+    } else if (arrow == 'D'){
+        return 'a';
+    } else {
+        cin.ignore(); // Three ignores in case the user holds ctrl keys 
+        cin.ignore();
+        cin.ignore();
+        return ' '; // Return a empty value if the arrow is not recognized
+    }
 
-    return ' ';
 }
 
 

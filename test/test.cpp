@@ -29,7 +29,7 @@ int main (){
         cout << "Your pressed: " << arrow << endl; 
     }
 
-    cin.ignore();
+    // cin.ignore();
     cout << rst;
     system("clear");
     cout << rst << bg_bk;
