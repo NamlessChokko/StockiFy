@@ -66,5 +66,66 @@ char get_arrow(){
 
 }
 
+char getKey() {
+    char first = '\0';
+    char second = '\0';
+    char third = '\0';
 
+    first = getch();
+    if (first != 27) { // Si no es la tecla ESC (27), se devuelve directamente
+        return first;
+    }
+
+    // Si la primera tecla es ESC (posible tecla especial)
+    second = getch();
+
+    if (second == '[') { 
+        third = getch();
+
+        switch (third) {
+            case 'A': return 128; // Flecha arriba
+            case 'B': return 129; // Flecha abajo
+            case 'C': return 130; // Flecha derecha
+            case 'D': return 131; // Flecha izquierda
+
+            case '5': 
+                if (getch() == '~') return 136; // Page Up
+                break;
+            case '6': 
+                if (getch() == '~') return 137; // Page Down
+                break;
+
+            case 'H': return 140; // Home
+            case 'F': return 141; // End
+            case '2': 
+                if (getch() == '~') return 142; // Insert
+                break;
+            case '3': 
+                if (getch() == '~') return 143; // Delete
+                break;
+
+            case '1': 
+                if (getch() == ';' && getch() == '5') { 
+                    char ctrlArrow = getch();
+                    switch (ctrlArrow) {
+                        case 'A': return 132; // Ctrl + Arriba
+                        case 'B': return 133; // Ctrl + Abajo
+                        case 'C': return 134; // Ctrl + Derecha
+                        case 'D': return 135; // Ctrl + Izquierda
+                    }
+                }
+                break;
+        }
+    } else if (second == 'O') { 
+        third = getch();
+        switch (third) {
+            case 'P': return 144; // F1
+            case 'Q': return 145; // F2
+            case 'R': return 146; // F3
+            case 'S': return 147; // F4
+        }
+    }
+
+    return -1; // Retorno en caso de que no se detecte ninguna tecla válida
+}
 

@@ -139,6 +139,10 @@ vector<string> adj_to_width(
     return lines;
 }
 
+string rep_char(int times, char character) {
+    return string (times, character);
+}
+
 
 // TODO: Fix adj_to_width function to handle multiple spaces between long words
 // TODO: implement settings to find json file path 

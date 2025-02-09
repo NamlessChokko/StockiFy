@@ -5,12 +5,16 @@
 #include "../../include/Menu_Interactions.h"
 #include "../../include/Strings_u.h"
 #include "../../include/Terminal_u.h"
+#include "../../include/Math_u.h"
+#include "../../include/Menu.h"
 #include <iostream>
 #include <string>
 #include <format>
 #include <unistd.h>
 
+
 using namespace std;
+
 
 
 void printL(string input, string color, size_t width){
@@ -23,7 +27,7 @@ void printL(string input, string color, size_t width){
 
 
         for (int i = 0; i < static_cast<int>(text.size()); i++){            
-            cout << cn << '|' << color << text[i] << empty_spaces << cn << '|' << endl;
+            cout << cn << '|' << color << text[i] << empty_spaces << cn << '|';
         }
         cout << rst;
     }
@@ -42,10 +46,11 @@ void printC(string input, string color, size_t width){
     }
 };
 
-void Option_menu(Option_Menu menu, string border_color){
+void Option_menu(Option_Menu menu){
     int width  = getTerminalWidth();
     string strong_line(width - 2, '=');
     string light_line(width - 2, '-');
+    string border_color = cn;
     char edge = '+';
 
     system("clear");
@@ -72,10 +77,11 @@ void Option_menu(Option_Menu menu, string border_color){
 
 };
 
-void Input_menu(Input_Menu menu, string border_color){
+void Input_menu(Input_Menu menu){
     int width  = getTerminalWidth();
     string strong_line(width - 2, '=');
     string light_line(width - 2, '-');
+    string border_color = cn;
     char edge = '+';
 
     system("clear");
@@ -103,10 +109,11 @@ void Input_menu(Input_Menu menu, string border_color){
 
 };
 
-void Info_menu(Info_Menu menu, string border_color){
+void Info_menu(Info_Menu menu){
     int width  = getTerminalWidth();
     string strong_line(width - 2, '=');
     string light_line(width - 2, '-');
+    string border_color;
     char edge = '+';
 
     system("clear");
@@ -148,6 +155,78 @@ void Error_screen(int error_code){
     cout << gn << "Press ENTER to continue...";
 
 };
+
+void dynamic_option_menu (menu menu) {
+
+        int selected_option = 0;
+        char edge = '+';
+        string border_color = cn;
+        char arrow = ' ';
+
+
+    while (1){
+        system("clear");
+        int width = getTerminalWidth();         
+        string arrow_key = (arrow == 'w')? "up" : "down";
+        vector<string> description = adj_to_width(menu.get_option_description(selected_option), width - (width / 4) - 3, true, ' '); 
+
+
+        cout << "Option: " << selected_option + 1 << '|' ;
+        cout << menu.get_options_count() << endl;
+        cout << "Terminal width: " << width << endl;
+        cout << "Option description size: " << description.size() << endl;
+        cout << "Last arrow pressed: " << arrow_key << endl;
+
+        cout << rd << edge << border_color << rep_char(width - 2, '=') << rd << edge << endl;
+
+        printC(menu.get_title(), mg, width);
+        printC(menu.get_subtitle(), cn, width);
+        printL(format(menu.get_body_paragraph()), rst, width);
+
+
+        cout << endl;
+        cout << rd << edge << border_color << rep_char((width / 4), '-') << rd << edge << cn << rep_char((width - (width / 4) - 3), '-') << rd << edge << rst << endl;
+
+        for (int i = 0; i < menu.get_options_count(); i++) {
+
+
+
+            if (selected_option != i) {
+                printL(menu.get_option(i), rst, (width / 4) + 2); 
+
+            } else {
+                printL(menu.get_option(i) + " <", rst, (width / 4) + 2);
+                
+            }
+
+            if (i < description.size()) {
+                cout << description[i] << cn << "|" << endl;
+            } else {
+                cout << rep_char(width - (width / 4) - 3, ' ') << cn << "|" << endl;
+            }
+
+
+        }
+
+        cout << rd << edge << border_color << rep_char(width - 2, '=') << rd << edge << rst << endl;
+
+
+
+        cout << endl;
+        arrow = get_arrow();
+        
+        if (arrow == 'w') {
+            selected_option--;
+        } else if (arrow == 's') {
+            selected_option++;
+        }
+
+        selected_option = (selected_option < 0)? menu.get_options_count() - 1 : selected_option;
+        selected_option = (selected_option >= menu.get_options_count())? 0 : selected_option;
+
+    }
+
+}
 
 
 // TODO: Fix: string empty_spaces(width - menu.get_options(i).size() - 10, ' '); << This trow an error when when width is less than line length

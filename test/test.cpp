@@ -12,9 +12,8 @@
 #include <iostream>
 #include <unistd.h>
 
-
-
 using namespace std;
+
 
 int main (){
     system("clear");
@@ -23,13 +22,20 @@ int main (){
     cout << bl << "Current working dir: " << rst << cwd << endl;
     cout << endl;
 
-    while (1){
-        cout << ">>> "; 
-        char arrow = get_arrow();
-        cout << "Your pressed: " << arrow << endl; 
-    }
 
-    // cin.ignore();
+    menu menu1;
+    menu1.set_title("StockiFy");
+    menu1.set_subtitle("Select an option:");
+    menu1.set_body_paragraph("Welcome to StockiFy! Here you can manage your stocks.");
+    menu1.set_options_count(2);
+    menu1.set_options("Enter", 0);
+    menu1.set_options("Setting", 1);
+    menu1.set_option_description("Enter and use the program pppppppppppppppppppppppppppppp", 0);
+    menu1.set_option_description("Change the program's settings ssssssssssssssssssssssssssssssssssss", 1);
+
+    dynamic_option_menu(menu1);
+    
+    cin.ignore();
     cout << rst;
     system("clear");
     cout << rst << bg_bk;

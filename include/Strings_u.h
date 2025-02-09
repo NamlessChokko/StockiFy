@@ -25,5 +25,7 @@ std::vector<std::string> adj_to_width (
     char empty_space
 );
 
+std::string rep_char (int times, char character);
+
 
 #endif // STRINGS_UTILS_H

@@ -16,6 +16,7 @@
 #include "Purchase_c.h"
 #include "Input_Menu_c.h"
 #include "Info_Menu_c.h"
+#include "Menu.h"
 
 #include "Json_u.h"
 #include "Strings_u.h"
