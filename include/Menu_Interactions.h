@@ -11,7 +11,7 @@ std::optional<int> select_option (int number_of_options);
 
 char get_arrow ();
 
-char getKey();
+int getKey();
 
 
 #endif // MENU_INTERACTIONS_H

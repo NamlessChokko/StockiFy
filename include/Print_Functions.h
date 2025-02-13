@@ -9,20 +9,20 @@ void printL(string input, string color, int width);
 void printC(string input, string color, int width);
 
 void Option_menu(
-    Option_Menu menu
+    menu menu
 );
 
 void Input_menu(
-    Input_Menu menu
+    menu menu
 );
 
 void Info_menu(
-    Info_Menu menu
+    menu menu
 );
 
 void Error_screen(int error_code);
 
-void dynamic_option_menu(
+int dynamic_option_menu(
     menu menu 
 
 );

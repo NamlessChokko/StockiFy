@@ -44,6 +44,18 @@ void menu::set_input_requirements(string quote, int index){
     input_requirements[index] = quote;
 };
 
+void menu::set_information_prompt(string new_prompt){
+    information_prompt = new_prompt;
+}
+
+void menu::set_information_name(string new_info_name){
+    information_name = new_info_name;
+};
+
+void menu::set_information(string new_information){
+    information = new_information;
+}
+
 string menu::get_name(){
     return name;
 };
@@ -77,6 +89,19 @@ string menu::get_input_name(){
 string menu::get_input_requirement(int index){
     return input_requirements[index];
 };
+
+string menu::get_information_name(){
+    return information_name;
+};
+
+string menu::get_information_prompt(){
+    return information_name;
+};
+
+string menu::get_information(){
+    return information;
+};
+
 
 void menu::clean_data(){ 
     name = "";

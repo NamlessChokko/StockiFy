@@ -9,7 +9,7 @@ int main_menu () {
     MM_screen.set_title("Main Menu");
     MM_screen.set_subtitle("Welcome to StockiFy!");    
     MM_screen.set_body_paragraph("This is a marketplace simulator in which you can sell and buy products. In Order to be able to to sell you will need to check the seller status in Clients settings.");
-    MM_screen.set_options_count(6);
+    MM_screen.set_options_count(5);
     MM_screen.set_options("Search products", 0);
     MM_screen.set_option_description("Search for products on sale so you can add them to your cart and then proceed to pay.", 0);
     MM_screen.set_options("Sell Products", 1);
@@ -32,8 +32,8 @@ int main(int argc, char *argv[]) {
 
     main_menu();
 
-    // int c = getKey();
-    // cout << c << endl;
+
+
 
 
 

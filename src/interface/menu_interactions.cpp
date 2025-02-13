@@ -66,66 +66,106 @@ char get_arrow(){
 
 }
 
-char getKey() {
-    char first = '\0';
-    char second = '\0';
-    char third = '\0';
+// Mapa de teclas especiales a valores ASCII personalizados
+int getKey() {
+    char code[5] = {'\0'};
 
-    first = getch();
-    if (first != 27) { // Si no es la tecla ESC (27), se devuelve directamente
-        return first;
+    code[1] = getch();
+    if (code[1] != 27) { // Si no es ESC, devuelve la tecla directamente
+        return code[1];
     }
 
-    // Si la primera tecla es ESC (posible tecla especial)
-    second = getch();
+    // Si la primera tecla es ESC, es una tecla especial
+    code[2] = getch();
 
-    if (second == '[') { 
-        third = getch();
+    if (code[2] == '[') {
+        code[3] = getch();
 
-        switch (third) {
+        switch (code[3]) {
             case 'A': return 128; // Flecha arriba
             case 'B': return 129; // Flecha abajo
             case 'C': return 130; // Flecha derecha
             case 'D': return 131; // Flecha izquierda
 
-            case '5': 
-                if (getch() == '~') return 136; // Page Up
-                break;
-            case '6': 
-                if (getch() == '~') return 137; // Page Down
-                break;
-
             case 'H': return 140; // Home
             case 'F': return 141; // End
-            case '2': 
-                if (getch() == '~') return 142; // Insert
-                break;
-            case '3': 
-                if (getch() == '~') return 143; // Delete
+
+            case '2':
+                code[4] = getch();
+                if (code[4] == '~') return 142; // Insert
                 break;
 
-            case '1': 
-                if (getch() == ';' && getch() == '5') { 
-                    char ctrlArrow = getch();
-                    switch (ctrlArrow) {
-                        case 'A': return 132; // Ctrl + Arriba
-                        case 'B': return 133; // Ctrl + Abajo
-                        case 'C': return 134; // Ctrl + Derecha
-                        case 'D': return 135; // Ctrl + Izquierda
+            case '3':
+                code[4] = getch();
+                if (code[4] == '~') return 143; // Delete
+                break;
+
+            case '5':
+                code[4] = getch();
+                if (code[4] == '~') return 136; // Page Up
+                break;
+
+            case '6':
+                code[4] = getch();
+                if (code[4] == '~') return 137; // Page Down
+                break;
+
+            case '1': // Posibles combinaciones Ctrl + Flechas o Ctrl + Home/End
+                code[4] = getch();
+                if (code[4] == ';') {
+                    char modifier = getch(); // Verificamos el modificador
+                    if (modifier == '5') { // Ctrl está presionado
+                        char ctrlKey = getch();
+                        switch (ctrlKey) {
+                            case 'A': return 132; // Ctrl + Arriba
+                            case 'B': return 133; // Ctrl + Abajo
+                            case 'C': return 134; // Ctrl + Derecha
+                            case 'D': return 135; // Ctrl + Izquierda
+                            case 'H': return 138; // Ctrl + Home
+                            case 'F': return 139; // Ctrl + End
+                        }
+                    } else if (modifier == '2'){
+                        char shftKey = getch();
+                        switch (shftKey) {
+                            case 'A': return 156; // Shift + Arriba
+                            case 'B': return 157; // Shift + Abajo
+                            case 'C': return 158; // Shift + Derecha
+                            case 'D': return 159; // Shift + Izquierda
+                            case 'H': return 160; // Shift + Home
+                            case 'F': return 161; // Shift + End
+                        }
                     }
                 }
                 break;
         }
-    } else if (second == 'O') { 
-        third = getch();
-        switch (third) {
+    } else if (code[2] == 'O') { 
+        code[3] = getch();
+        switch (code[3]) {
             case 'P': return 144; // F1
             case 'Q': return 145; // F2
             case 'R': return 146; // F3
             case 'S': return 147; // F4
+            default:
+                if (code[3] >= 't' && code[3] <= 'v') {
+                    return 148 + (code[3] - 't'); // F5-F7
+                } else if (code[3] >= 'w' && code[3] <= 'y') {
+                    return 151 + (code[3] - 'w'); // F8-F10
+                }
+                break;
+        }
+    } else if (code[2] == '1') { // Para F11 y F12
+        code[3] = getch();
+        if (code[3] == '1') {
+            code[4] = getch();
+            if (code[4] == '~') return 154; // F11
+        } else if (code[3] == '2') {
+            code[4] = getch();
+            if (code[4] == '~') return 155; // F12
         }
     }
 
-    return -1; // Retorno en caso de que no se detecte ninguna tecla válida
+    return -1; // No se detectó ninguna tecla especial válida
 }
+
+
 

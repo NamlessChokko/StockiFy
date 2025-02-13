@@ -1,6 +1,4 @@
-#include "../../include/Option_Menu_c.h"
-#include "../../include/Input_Menu_c.h"
-#include "../../include/Info_Menu_c.h"
+#include "../../include/Menu.h"
 #include "../../include/Definitions.h"
 #include "../../include/Menu_Interactions.h"
 #include "../../include/Strings_u.h"
@@ -46,7 +44,7 @@ void printC(string input, string color, size_t width){
     }
 };
 
-void Option_menu(Option_Menu menu){
+void Option_menu(menu menu){
     int width  = getTerminalWidth();
     string strong_line(width - 2, '=');
     string light_line(width - 2, '-');
@@ -68,8 +66,8 @@ void Option_menu(Option_Menu menu){
     string empty_spaces(width - 14, ' ');
     cout << border_color << "|" << mg << "# - "  << "Options:" << empty_spaces << border_color << "|" << rst << endl;
     for (int i = 0; i < menu.get_options_count(); i++){
-        string empty_spaces(width - menu.get_options(i).size() - 10, ' ');
-        cout << border_color << "|" << cn << "  [" << menu.get_options_keys(i) << "]" << "-> " << gn << menu.get_options(i) << empty_spaces << border_color << "|" << rst << endl;
+        string empty_spaces(width - menu.get_option(i).size() - 10, ' ');
+        cout << border_color << "|" << cn << "  [" << menu.get_option_key(i) << "]" << "-> " << gn << menu.get_option(i) << empty_spaces << border_color << "|" << rst << endl;
     }
     cout << rd << edge << border_color << strong_line << rd << edge;
     cout << endl;
@@ -77,7 +75,7 @@ void Option_menu(Option_Menu menu){
 
 };
 
-void Input_menu(Input_Menu menu){
+void Input_menu(menu menu){
     int width  = getTerminalWidth();
     string strong_line(width - 2, '=');
     string light_line(width - 2, '-');
@@ -98,7 +96,7 @@ void Input_menu(Input_Menu menu){
     cout << endl;
     string empty_spaces(width - 19, ' ');
     cout << border_color << "|" << mg << "# - "  << "Requirements:" << empty_spaces << border_color << "|" << rst << endl;
-    for (int i = 0; i < menu.get_requirements_count(); i++){
+    for (int i = 0; i < menu.get_requirement_count(); i++){
         string empty_spaces(width - menu.get_input_requirement(i).size() - 8, ' ');
         cout << border_color << "|" << cn << "  @" << "-> " << rd << menu.get_input_requirement(i) << empty_spaces << border_color << "|" << rst << endl;
     }
@@ -109,7 +107,7 @@ void Input_menu(Input_Menu menu){
 
 };
 
-void Info_menu(Info_Menu menu){
+void Info_menu(menu menu){
     int width  = getTerminalWidth();
     string strong_line(width - 2, '=');
     string light_line(width - 2, '-');
@@ -156,12 +154,12 @@ void Error_screen(int error_code){
 
 };
 
-void dynamic_option_menu (menu menu) {
+int dynamic_option_menu (menu menu) {
 
-        int selected_option = 0;
-        char edge = '+';
-        string border_color = cn;
-        char arrow = ' ';
+    int selected_option = 0;
+    char edge = '+';
+    string border_color = cn;
+    int arrow = 0;
 
 
     while (1){
@@ -169,13 +167,6 @@ void dynamic_option_menu (menu menu) {
         int width = getTerminalWidth();         
         string arrow_key = (arrow == 'w')? "up" : "down";
         vector<string> description = adj_to_width(menu.get_option_description(selected_option), width - (width / 4) - 3, true, ' '); 
-
-
-        cout << "Option: " << selected_option + 1 << '|' ;
-        cout << menu.get_options_count() << endl;
-        cout << "Terminal width: " << width << endl;
-        cout << "Option description size: " << description.size() << endl;
-        cout << "Last arrow pressed: " << arrow_key << endl;
 
         cout << rd << edge << border_color << rep_char(width - 2, '=') << rd << edge << endl;
 
@@ -199,7 +190,7 @@ void dynamic_option_menu (menu menu) {
                 
             }
 
-            if (i < description.size()) {
+            if (i < static_cast<int>(description.size())) {
                 cout << description[i] << cn << "|" << endl;
             } else {
                 cout << rep_char(width - (width / 4) - 3, ' ') << cn << "|" << endl;
@@ -213,19 +204,24 @@ void dynamic_option_menu (menu menu) {
 
 
         cout << endl;
-        arrow = get_arrow();
-        
-        if (arrow == 'w') {
+        arrow = getKey();
+
+
+        if (arrow == 128) {
             selected_option--;
-        } else if (arrow == 's') {
+        } else if (static_cast<int>(arrow) == 129) {
             selected_option++;
-        }
+        } else if (arrow == 10 || arrow == 130 || arrow == 32) {
+            break;
+        } else {continue;}
 
         selected_option = (selected_option < 0)? menu.get_options_count() - 1 : selected_option;
         selected_option = (selected_option >= menu.get_options_count())? 0 : selected_option;
 
     }
 
+
+    return selected_option;
 }
 
 

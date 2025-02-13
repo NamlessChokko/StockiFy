@@ -14,13 +14,19 @@ private:
     string title;
     string subtitle;
     string body_paragraph;
+
     int options_count;
     vector<string> options;
     vector<char> options_keys;
     vector<string> options_descriptions;
+
     int requirement_count;
     string input_name;
     vector<string> input_requirements;
+
+    string information_prompt;
+    string information;
+    string information_name;
 
 public:
     menu();
@@ -35,6 +41,9 @@ public:
     void set_requirement_count(int new_requirement_count);
     void set_input_name(string new_input_name);
     void set_input_requirements(string quote, int index);
+    void set_information_prompt(string new_information_prompt);
+    void set_information_name(string new_information_name);
+    void set_information(string new_information);
 
     string get_name();
     string get_title();
@@ -47,6 +56,9 @@ public:
     int get_requirement_count();
     string get_input_name();
     string get_input_requirement(int index);
+    string get_information_prompt();
+    string get_information_name();
+    string get_information();
 
     void clean_data();
 
