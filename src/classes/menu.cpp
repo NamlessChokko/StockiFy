@@ -1,6 +1,7 @@
 #include "../../include/Menu.h"
 #include <vector>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -101,7 +102,6 @@ string menu::get_information_prompt(){
 string menu::get_information(){
     return information;
 };
-
 
 void menu::clean_data(){ 
     name = "";

@@ -9,24 +9,38 @@
 #include <string>
 #include <format>
 #include <unistd.h>
-
+#include <vector>
 
 using namespace std;
 
 
+void prtLL(string input, string color, int width, int number_lines){
+    if (input != ""){
+        cout << color;
+        string line = cutLine(input, width - 2);
+
+        for (int i = 0; i < number_lines; i++){            
+            cout << cn << '|' << color << line << cn << '|';
+        }
+
+
+        cout << rst;
+    }
+}
 
 void printL(string input, string color, size_t width){
     if (input != ""){
         cout << color;
-        vector<string> text = adj_to_width(input, width - 2, true, ' ');
-        string empty_spaces(width - (text[text.size() - 1].size()) - 2, ' ');
-        
+        vector<string> lines = adj_to_width(input, width - 2, true, ' ');
+        int i = 0;
 
+        do {
+            cout << cn << '|' << color << lines[i] << cn << '|' << endl;
+            i ++;
+        } while (i < static_cast<int>(lines.size()) - 1);
 
+        cout << cn << '|' << color << lines[i] << cn << '|';
 
-        for (int i = 0; i < static_cast<int>(text.size()); i++){            
-            cout << cn << '|' << color << text[i] << empty_spaces << cn << '|';
-        }
         cout << rst;
     }
 };
@@ -44,117 +58,7 @@ void printC(string input, string color, size_t width){
     }
 };
 
-void Option_menu(menu menu){
-    int width  = getTerminalWidth();
-    string strong_line(width - 2, '=');
-    string light_line(width - 2, '-');
-    string border_color = cn;
-    char edge = '+';
-
-    system("clear");
-    cout << rst;
-
-    cout << rd << edge << border_color << strong_line << rd << edge << rst << endl;
-
-    printC(menu.get_title(), mg, width);
-    printC(menu.get_subtitle(), cn, width);
-    printL(format(menu.get_body_paragraph()), rst, width);
-    cout << rd << edge << border_color << light_line << rd << edge << rst;
-
-    
-    cout << "\n";
-    string empty_spaces(width - 14, ' ');
-    cout << border_color << "|" << mg << "# - "  << "Options:" << empty_spaces << border_color << "|" << rst << endl;
-    for (int i = 0; i < menu.get_options_count(); i++){
-        string empty_spaces(width - menu.get_option(i).size() - 10, ' ');
-        cout << border_color << "|" << cn << "  [" << menu.get_option_key(i) << "]" << "-> " << gn << menu.get_option(i) << empty_spaces << border_color << "|" << rst << endl;
-    }
-    cout << rd << edge << border_color << strong_line << rd << edge;
-    cout << endl;
-    cout << gn << ">>> ";
-
-};
-
-void Input_menu(menu menu){
-    int width  = getTerminalWidth();
-    string strong_line(width - 2, '=');
-    string light_line(width - 2, '-');
-    string border_color = cn;
-    char edge = '+';
-
-    system("clear");
-    cout << rst;
-
-    cout << rd << edge << border_color << strong_line << rd << edge << rst << endl;
-
-    printC(menu.get_title(), mg, width);
-    printC(menu.get_subtitle(), cn, width);
-    printL(format(menu.get_body_paragraph()), rst, width);
-    cout << rd << edge << border_color << light_line << rd << edge << rst;
-
-
-    cout << endl;
-    string empty_spaces(width - 19, ' ');
-    cout << border_color << "|" << mg << "# - "  << "Requirements:" << empty_spaces << border_color << "|" << rst << endl;
-    for (int i = 0; i < menu.get_requirement_count(); i++){
-        string empty_spaces(width - menu.get_input_requirement(i).size() - 8, ' ');
-        cout << border_color << "|" << cn << "  @" << "-> " << rd << menu.get_input_requirement(i) << empty_spaces << border_color << "|" << rst << endl;
-    }
-    cout << rd << edge << border_color << strong_line << rd << edge;
-    cout << endl;
-    cout << gn << menu.get_input_name() << ": " << bk << bg_wt;
-
-
-};
-
-void Info_menu(menu menu){
-    int width  = getTerminalWidth();
-    string strong_line(width - 2, '=');
-    string light_line(width - 2, '-');
-    string border_color;
-    char edge = '+';
-
-    system("clear");
-    cout << rst;
-
-    cout << rd << edge << border_color << strong_line << rd << edge << rst << endl;
-    printC(menu.get_title(), mg, width);
-    printC(menu.get_subtitle(), cn, width);
-    printL(format(menu.get_body_paragraph()), rst, width);
-    string _empty_spaces(width - 2, ' ');
-    cout << cn << "|" << _empty_spaces << "|";
-    string empty_spaces(width - menu.get_information_name().length() - 3, ' ');
-    cout << border_color << "|" << mg << menu.get_information_name() << ":" << empty_spaces << border_color << "|";
-    printL(menu.get_information(), rst, width);
-    cout << rd << edge << border_color << strong_line << rd << edge << rst << endl;
-    
-    cout << gn << "Press " << "ENTER " << "to continue..." << rst;
-
-};
-
-void Error_screen(int error_code){
-    system("clear");
-    cout << rst;
-    string code = error_handler(error_code);
-    int width = getTerminalWidth();
-    string strong_line(width - 2, '=');
-    string light_line(width - 2, '-');
-    char edge = '+';
-
-    error_code = (code == "An unexpected error occurred. Please, check directory json_db/expected_errors.json.") ? 1 : error_code;
-
-
-    cout << rd << edge << cn << strong_line << rd << edge << endl;
-    printC("Error Screen", mg, width);
-    printL("An error occurred.", rd, width);
-    printL(format("Error code: ["+ to_string(error_code) + "]"), rd, width);
-    printL(format(code), rd, width);
-    cout << rd << edge << cn << strong_line << rd << edge << endl;
-    cout << gn << "Press ENTER to continue...";
-
-};
-
-int dynamic_option_menu (menu menu) {
+int initOpt (menu menu) {
 
     int selected_option = 0;
     char edge = '+';
@@ -166,7 +70,7 @@ int dynamic_option_menu (menu menu) {
         system("clear");
         int width = getTerminalWidth();         
         string arrow_key = (arrow == 'w')? "up" : "down";
-        vector<string> description = adj_to_width(menu.get_option_description(selected_option), width - (width / 4) - 3, true, ' '); 
+        vector<string> description = adj_to_width(menu.get_option_description(selected_option), width - (width / 3) - 3, true, ' '); 
 
         cout << rd << edge << border_color << rep_char(width - 2, '=') << rd << edge << endl;
 
@@ -176,33 +80,26 @@ int dynamic_option_menu (menu menu) {
 
 
         cout << endl;
-        cout << rd << edge << border_color << rep_char((width / 4), '-') << rd << edge << cn << rep_char((width - (width / 4) - 3), '-') << rd << edge << rst << endl;
+        cout << rd << edge << border_color << rep_char((width / 3), '-') << rd << edge << cn << rep_char((width - (width / 3) - 3), '-') << rd << edge << rst << endl;
 
         for (int i = 0; i < menu.get_options_count(); i++) {
 
 
 
             if (selected_option != i) {
-                printL(menu.get_option(i), rst, (width / 4) + 2); 
-
+                prtLL(" + " + menu.get_option(i), rst, (width / 3) + 2, 1); 
             } else {
-                printL(menu.get_option(i) + " <", rst, (width / 4) + 2);
-                
+                prtLL(" > " + menu.get_option(i), gn, (width / 3) + 2, 1);
             }
 
             if (i < static_cast<int>(description.size())) {
-                cout << description[i] << cn << "|" << endl;
+                cout << gn << description[i] << cn << "|" << endl;
             } else {
-                cout << rep_char(width - (width / 4) - 3, ' ') << cn << "|" << endl;
+                cout << rep_char(width - (width / 3) - 3, ' ') << cn << "|" << endl;
             }
 
-
         }
-
         cout << rd << edge << border_color << rep_char(width - 2, '=') << rd << edge << rst << endl;
-
-
-
         cout << endl;
         arrow = getKey();
 
@@ -223,6 +120,14 @@ int dynamic_option_menu (menu menu) {
 
     return selected_option;
 }
+
+string initInpt () {
+    string user_input;
+
+
+    return user_input;
+}
+
 
 
 // TODO: Fix: string empty_spaces(width - menu.get_options(i).size() - 10, ' '); << This trow an error when when width is less than line length

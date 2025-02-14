@@ -22,7 +22,7 @@ void Info_menu(
 
 void Error_screen(int error_code);
 
-int dynamic_option_menu(
+int initOpt(
     menu menu 
 
 );

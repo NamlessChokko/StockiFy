@@ -27,5 +27,7 @@ std::vector<std::string> adj_to_width (
 
 std::string rep_char (int times, char character);
 
+std::string cutLine (std::string input, int width);
+
 
 #endif // STRINGS_UTILS_H

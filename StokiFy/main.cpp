@@ -23,7 +23,7 @@ int main_menu () {
     MM_screen.set_options("Exit the Program", 5);
     MM_screen.set_option_description("Close the program and disconnect the SQL server.", 5);
 
-    dynamic_option_menu(MM_screen);
+    initOpt(MM_screen);
 
 }
 

@@ -143,6 +143,21 @@ string rep_char(int times, char character) {
     return string (times, character);
 }
 
+string cutLine(string input, int width){
+    string line;
+    
+    if (static_cast<int>(input.size()) < width){
+        string empty_spaces(width - input.size(), ' ');
+        line = input + empty_spaces;
+        return line;
+    } else {
+        line = input.substr(0, width - 3);
+        line = line + "...";
+        return line;
+    }
+
+}
+
 
 // TODO: Fix adj_to_width function to handle multiple spaces between long words
 // TODO: implement settings to find json file path 
