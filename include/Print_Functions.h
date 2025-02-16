@@ -4,7 +4,7 @@
 
 #include <string>
 
-void printL(string input, string color, int width);
+void printL(string input, string color, int width, bool has_border);
 
 void printC(string input, string color, int width);
 
@@ -25,6 +25,16 @@ void Error_screen(int error_code);
 int initOpt(
     menu menu 
 
+);
+
+string input (
+    string _prompt, 
+    string input_name,
+    string key,
+    int minimum_length,
+    int maximum_length,
+    bool start_space,
+    bool end_space
 );
 
 

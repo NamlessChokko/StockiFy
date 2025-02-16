@@ -7,10 +7,9 @@
 
 using namespace std;
 using namespace nlohmann;
-const string default_file_path = "json_db/expected_errors.json";
 
 
-string get_string(string key, string file_path = default_file_path) {
+string get_string(string key, string file_path) {
     json json_file;
 
     try {
@@ -42,7 +41,7 @@ string find_error_message(const json& j, const string& key) {
     return "";
 }
 
-string read_error_message(int error_number, string file_path = default_file_path) {
+string read_error_message(int error_number, string file_path) {
     json json_file;
     string key = to_string(error_number);
 
@@ -63,5 +62,5 @@ string read_error_message(int error_number, string file_path = default_file_path
         return message;
     }
 
-    return "An unexpected error occurred. Please, check directory json_db/expected_errors.json.";
+    return "null";
 }

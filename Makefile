@@ -19,6 +19,10 @@ OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRC_FILES))
 TEST_FILES = $(wildcard $(TEST_DIR)/**/*.cpp $(TEST_DIR)/*.cpp)
 TEST_OBJ_FILES = $(patsubst $(TEST_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(TEST_FILES))
 
+MAIN_SRC = StockiFy/main.cpp
+MAIN_OBJ = $(BUILD_DIR)/main.o
+MAIN_TARGET = main.out
+
 all: $(TARGET)
 
 $(TARGET): $(OBJ_FILES)
@@ -37,6 +41,14 @@ $(TEST_TARGET): $(TEST_OBJ_FILES) $(OBJ_FILES)
 
 $(BUILD_DIR)/%.o: $(TEST_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@;
+
+
+main: $(MAIN_OBJ) $(OBJ_FILES)
+	$(CXX) $(CXXFLAGS) -o $(MAIN_TARGET) $^
+
+$(MAIN_OBJ): $(MAIN_SRC)
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
 clean:

@@ -3,6 +3,7 @@
 #include "../../include/Definitions.h"
 #include "../../include/Terminal_u.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -29,12 +30,12 @@ unordered_map<string, string> colors = {
 
 
 int is_valid_string (
-    string input = "",
-    string key = "default_allowed_char",
-    int minimum_length = 0,
-    int maximum_length = 5,
-    bool start_space = false,
-    bool end_space = false
+    string input,
+    string key,
+    int minimum_length,
+    int maximum_length,
+    bool start_space,
+    bool end_space
 
 ) {
 
@@ -47,7 +48,7 @@ int is_valid_string (
         return 310;
     }
 
-    string allowed_characters = get_string(key, "json_db/allowed_characters.json");
+    string allowed_characters = get_string(key, "json_db/allowed_char.json");
 
     if (allowed_characters == "error") {
         return 304;
@@ -159,5 +160,4 @@ string cutLine(string input, int width){
 }
 
 
-// TODO: Fix adj_to_width function to handle multiple spaces between long words
 // TODO: implement settings to find json file path 

@@ -5,6 +5,7 @@
 #include "../../include/Terminal_u.h"
 #include "../../include/Math_u.h"
 #include "../../include/Menu.h"
+#include "../../include/Json_u.h"
 #include <iostream>
 #include <string>
 #include <format>
@@ -28,19 +29,20 @@ void prtLL(string input, string color, int width, int number_lines){
     }
 }
 
-void printL(string input, string color, size_t width){
+void printL(string input, string color, size_t width, bool has_border){
     if (input != ""){
         cout << color;
-        vector<string> lines = adj_to_width(input, width - 2, true, ' ');
+        string border = (has_border)? "|" : ""; 
+        vector<string> lines = adj_to_width(input, width - border.length(), true, ' ');
         int i = 0;
+        if (lines.size() > 1){
+            do {
+                cout << cn << border << color << lines[i] << cn << border << endl;
+                i ++;
+            } while (i < static_cast<int>(lines.size()) - 1);
+        }
 
-        do {
-            cout << cn << '|' << color << lines[i] << cn << '|' << endl;
-            i ++;
-        } while (i < static_cast<int>(lines.size()) - 1);
-
-        cout << cn << '|' << color << lines[i] << cn << '|';
-
+        cout << cn << border << color << lines[i] << cn << border;
         cout << rst;
     }
 };
@@ -76,7 +78,7 @@ int initOpt (menu menu) {
 
         printC(menu.get_title(), mg, width);
         printC(menu.get_subtitle(), cn, width);
-        printL(format(menu.get_body_paragraph()), rst, width);
+        printL(format(menu.get_body_paragraph()), rst, width, true);
 
 
         cout << endl;
@@ -121,13 +123,46 @@ int initOpt (menu menu) {
     return selected_option;
 }
 
-string initInpt () {
-    string user_input;
+string input (
+    string _prompt, 
+    string input_name,
+    string key,
+    int minimum_length,
+    int maximum_length,
+    bool start_space,
+    bool end_space
+) {
+
+    while (1) {
+        system("clear");
+        cout << rst;
+        int width = getTerminalWidth();
+        vector<string> prompt = adj_to_width(_prompt, width, true, ' ');
+
+        for (int i = 0; i < static_cast<int>(prompt.size()); i++){
+            cout << cn << prompt[i] << endl;
+        }
+        cout << gn << input_name << ": " << gn;
+        string input;
+        getline(cin, input, '\n');
+        cout << rst;
+
+        int error_code = is_valid_string(input, key, minimum_length, maximum_length, start_space, end_space);
 
 
-    return user_input;
+        if (!error_code) {
+            return input;
+        } else {
+            string error = read_error_message(error_code, "json_db/expected_errors.json");
+
+            cout << rd << "Error: " << error_code << endl;
+            printL(error, rd, width, false);
+            cout << gn << "Press ENTER to continue..." << rst;
+            int c = getch();
+            continue;
+        }
+
+    }
+
+
 }
-
-
-
-// TODO: Fix: string empty_spaces(width - menu.get_options(i).size() - 10, ' '); << This trow an error when when width is less than line length

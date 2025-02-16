@@ -27,10 +27,30 @@ int main_menu () {
 
 }
 
+int input_menu(){
+
+    menu IM_screen;
+    IM_screen.set_title("Input Menu");
+    IM_screen.set_subtitle("Enter your product name:");
+    IM_screen.set_body_paragraph("Please enter the name of your product. This will help others find it.");
+    IM_screen.set_input_name("Product name");
+    IM_screen.set_requirement_count(4);
+    IM_screen.set_input_requirements("1. The product name should not be empty.", 0);
+    IM_screen.set_input_requirements("2. The product name should be at least 5 characters long.", 1);
+    IM_screen.set_input_requirements("3. The product name should not contain any special characters or numbers.", 2);
+    IM_screen.set_input_requirements("4. The product name should not contain any duplicate words.", 3);
+
+    input ("Enter your name aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.", "Name", "client_name", 3, 50, false, false);
+
+    return 0;
+};
+
 
 int main(int argc, char *argv[]) {
 
-    main_menu();
+    // main_menu();
+
+    int a = input_menu();
 
     // int c = getKey();
     // cout << c << endl;
