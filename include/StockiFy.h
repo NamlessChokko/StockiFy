@@ -17,10 +17,14 @@
 #include "Json_u.h"
 #include "Strings_u.h"
 #include "Terminal_u.h"
+#include "Json_def.h"
 
 #include "Menu_Interactions.h"
 #include "Definitions.h"
 #include "Print_Functions.h"
+
+using namespace std;
+using namespace nlohmann;
 
 
 #endif // STOCKIFY_H

@@ -10,7 +10,7 @@
     "menu_input" : {
         "302" : "Invalid input. Please try again.",
         "303" : "Inexistent option selected. Pleas try again ",
-        "304" : "There was an error during the validation of the input. Please check directory: 'json_db/allowed_char.json' and the program documentation.",
+        "304" : "There was an error during the validation of the input. Please check directory: 'Skfy_settings/allowed_char.json' and the program documentation.",
         "305" : "Invalid input: You entered an invalid character. Please try again.",
         "306" : "Invalid input: The input can no end with an empty space. Please try again.",
         "307" : "Invalid input: The input can no start with an empty space. Please try again.",

@@ -48,13 +48,13 @@ string read_error_message(int error_number, string file_path) {
     try {
         ifstream file(file_path);
         if (!file) {
-            return "An unexpected error occurred. Please, check directory json_db/expected_errors.json.";
+            return "An unexpected error occurred. Please, check directory Skfy_settings/expected_errors.json.";
         }
 
         file >> json_file;
         file.close();
     } catch (json::parse_error& e) {
-        return "An unexpected error occurred. Please, check directory json_db/expected_errors.json.";
+        return "An unexpected error occurred. Please, check directory Skfy_settings/expected_errors.json.";
     }
 
     string message = find_error_message(json_file, key);

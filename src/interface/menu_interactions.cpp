@@ -12,7 +12,7 @@ const int SQR_BRCKT = 91;
 string error_handler (
     int error_number
 ){
-    return  read_error_message(error_number, "json_db/expected_errors.json");
+    return  read_error_message(error_number, "Skfy_settings/expected_errors.json");
 }
 
 int validate_option (

@@ -48,7 +48,7 @@ int is_valid_string (
         return 310;
     }
 
-    string allowed_characters = get_string(key, "json_db/allowed_char.json");
+    string allowed_characters = get_string(key, "Skfy_settings/allowed_char.json");
 
     if (allowed_characters == "error") {
         return 304;

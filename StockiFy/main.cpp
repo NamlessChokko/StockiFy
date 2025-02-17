@@ -1,7 +1,41 @@
 #include "../include/StockiFy.h"
+string program_settings_dir = "Skfy_settings/settings.json";
+json settings;
 
-using namespace std;
+void init_program(){
 
+    try {
+        ifstream file(program_settings_dir);
+        file >> settings;
+        file.close();
+    } catch (json::parse_error& e){
+        ofstream file;
+        file.open(program_settings_dir);
+        json settings_obj;
+        settings = resettings();
+        file << settings;
+        file.close();
+
+    }
+
+    ofstream allowed_char;
+    allowed_char.open("Skfy_settings/allowed_char.json");
+    if (!allowed_char.good()) {
+        json allowed_char_obj = re_allowed_char();
+        allowed_char << allowed_char_obj;
+    }
+    allowed_char.close();
+
+    ofstream expected_errors;
+    expected_errors.open("Skfy_settings/expected_errors.json");
+    if (!expected_errors.good()) {
+        json expected_errors_obj = re_expected_errors();
+        expected_errors << expected_errors_obj;
+    }
+    expected_errors.close();
+
+
+}
 
 int main_menu () {
     
@@ -29,6 +63,10 @@ int main_menu () {
 
 
 int main(int argc, char *argv[]) {
+
+    init_program();
+
+
 
     main_menu();
 

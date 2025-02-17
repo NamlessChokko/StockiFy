@@ -153,7 +153,7 @@ string input (
         if (!error_code) {
             return input;
         } else {
-            string error = read_error_message(error_code, "json_db/expected_errors.json");
+            string error = read_error_message(error_code, "Skfy_settings/expected_errors.json");
 
             cout << rd << "Error: " << error_code << endl;
             printL(error, rd, width, false);
