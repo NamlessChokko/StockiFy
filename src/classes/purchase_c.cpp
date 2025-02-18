@@ -1,7 +1,4 @@
 #include "../../include/Purchase_c.h"
-#include <iostream>
-#include <string>
-
 
 using namespace std;
 

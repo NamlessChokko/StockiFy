@@ -2,6 +2,7 @@
 #ifndef PURCHASE_H
 #define PURCHASE_H
 
+#include <iostream>
 #include <string>
 
 

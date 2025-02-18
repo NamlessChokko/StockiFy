@@ -1,6 +1,6 @@
 # Compiler 
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Iinclude -Ilib/nlohmann
+CXXFLAGS = -std=c++17 -Wall -Iinclude -Ilib/nlohmann 
 
 # Dirs
 SRC_DIR = src
@@ -9,7 +9,7 @@ INCLUDE_DIR = include
 TEST_DIR = test
 
 # Executable
-TARGET = StockiFy
+TARGET = Stocki.out
 TEST_TARGET = test_bin.out
 
 # Source and object files
@@ -21,7 +21,7 @@ TEST_OBJ_FILES = $(patsubst $(TEST_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(TEST_FILES))
 
 MAIN_SRC = StockiFy/main.cpp
 MAIN_OBJ = $(BUILD_DIR)/main.o
-MAIN_TARGET = main.out
+MAIN_TARGET = StockiFy.out
 
 all: $(TARGET)
 

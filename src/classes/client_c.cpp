@@ -1,9 +1,5 @@
 #include "../../include/Client_c.h"
-#include "../../include/Strings_u.h"
-#include <iostream>
-#include <string>
 
-using namespace std;
 
 // Constructor
 Client::Client(){

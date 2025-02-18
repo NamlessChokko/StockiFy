@@ -1,27 +1,14 @@
-#include "../../include/Menu.h"
-#include "../../include/Definitions.h"
-#include "../../include/Menu_Interactions.h"
-#include "../../include/Strings_u.h"
-#include "../../include/Terminal_u.h"
-#include "../../include/Math_u.h"
-#include "../../include/Menu.h"
-#include "../../include/Json_u.h"
-#include <iostream>
-#include <string>
-#include <format>
-#include <unistd.h>
-#include <vector>
-
-using namespace std;
+#include "../../include/Print_Functions.h"
 
 
-void prtLL(string input, string color, int width, int number_lines){
+void prtLL(string input, string color, int width, int number_lines, bool has_border){
     if (input != ""){
         cout << color;
-        string line = cutLine(input, width - 2);
+        string border = (has_border)? "|" : "";
+        string line = cutLine(input, width - 2 * (border.length()));
 
         for (int i = 0; i < number_lines; i++){            
-            cout << cn << '|' << color << line << cn << '|';
+            cout << cn << border << color << line << cn << border;
         }
 
 
@@ -33,7 +20,7 @@ void printL(string input, string color, size_t width, bool has_border){
     if (input != ""){
         cout << color;
         string border = (has_border)? "|" : ""; 
-        vector<string> lines = adj_to_width(input, width - border.length(), true, ' ');
+        vector<string> lines = adj_to_width(input, width - 2 * (border.length()), true, ' ');
         int i = 0;
         if (lines.size() > 1){
             do {
@@ -47,16 +34,17 @@ void printL(string input, string color, size_t width, bool has_border){
     }
 };
 
-void printC(string input, string color, size_t width){
+void printC(string input, string color, size_t width, bool has_border){
     if (input != ""){ 
         int empty_spaces = width - input.length();
         empty_spaces = empty_spaces / 2;
+        string border = (has_border)? "|" : "";
         string left(empty_spaces, ' ');
-        string right(width - left.length() - input.length() - 2, ' '); 
+        string right(width - left.length() - input.length() - 2 * (border.length()), ' '); 
 
-        cout << cn << '|';
+        cout << cn << border;
         cout << color << left << input << right << rst; 
-        cout << cn << '|' << rst << endl;
+        cout << cn << border << rst << endl;
     }
 };
 
@@ -71,13 +59,12 @@ int initOpt (menu menu) {
     while (1){
         system("clear");
         int width = getTerminalWidth();         
-        string arrow_key = (arrow == 'w')? "up" : "down";
         vector<string> description = adj_to_width(menu.get_option_description(selected_option), width - (width / 3) - 3, true, ' '); 
 
         cout << rd << edge << border_color << rep_char(width - 2, '=') << rd << edge << endl;
 
-        printC(menu.get_title(), mg, width);
-        printC(menu.get_subtitle(), cn, width);
+        printC(menu.get_title(), mg, width, true);
+        printC(menu.get_subtitle(), cn, width, true);
         printL(format(menu.get_body_paragraph()), rst, width, true);
 
 
@@ -89,9 +76,9 @@ int initOpt (menu menu) {
 
 
             if (selected_option != i) {
-                prtLL(" + " + menu.get_option(i), rst, (width / 3) + 2, 1); 
+                prtLL(" + " + menu.get_option(i), rst, (width / 3) + 2, 1, true); 
             } else {
-                prtLL(" > " + menu.get_option(i), gn, (width / 3) + 2, 1);
+                prtLL(" > " + menu.get_option(i), gn, (width / 3) + 2, 1, true);
             }
 
             if (i < static_cast<int>(description.size())) {
@@ -158,7 +145,7 @@ string input (
             cout << rd << "Error: " << error_code << endl;
             printL(error, rd, width, false);
             cout << gn << "Press ENTER to continue..." << rst;
-            int c = getch();
+            getch();
             continue;
         }
 

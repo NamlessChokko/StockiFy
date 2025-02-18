@@ -1,39 +1,46 @@
 #include "../include/StockiFy.h"
-string program_settings_dir = "Skfy_settings/settings.json";
-json settings;
 
 void init_program(){
+    string settings_path = "Skfy_settings/settings.json";
+    string allowed_char_path = "Skfy_settings/allowed_char.json";
+    string expected_errors_path = "Skfy_settings/expected_errors.json";
 
-    try {
-        ifstream file(program_settings_dir);
-        file >> settings;
-        file.close();
-    } catch (json::parse_error& e){
-        ofstream file;
-        file.open(program_settings_dir);
-        json settings_obj;
-        settings = resettings();
-        file << settings;
-        file.close();
+    fstream settings(settings_path);
+    if (!settings) {
+        makeFile_s("settings.json", "Skfy_settings");
+        enter_obj(settings_path, "settings");
+    }
+    settings.close();
 
+    fstream allowed_char(allowed_char_path); 
+    if (!allowed_char) {
+        makeFile_s("allowed_char.json", "Skfy_settings");
+        enter_obj(allowed_char_path, "allowed_char");
+    } else {
+        json curr_obj;
+        allowed_char >> curr_obj;
+        allowed_char.close();
+
+        if (curr_obj != json_objs("allowed_char")) {
+            enter_obj(allowed_char_path, "allowed_char");
+            curr_obj.clear();
+        }
     }
 
-    ofstream allowed_char;
-    allowed_char.open("Skfy_settings/allowed_char.json");
-    if (!allowed_char.good()) {
-        json allowed_char_obj = re_allowed_char();
-        allowed_char << allowed_char_obj;
-    }
-    allowed_char.close();
+    fstream expected_errors(expected_errors_path); 
+    if (!expected_errors) {
+        makeFile_s("expected_errors.json", "Skfy_settings");
+        enter_obj(expected_errors_path, "expected_errors");
+    } else {
+        json curr_obj;
+        expected_errors >> curr_obj;
+        expected_errors.close();
 
-    ofstream expected_errors;
-    expected_errors.open("Skfy_settings/expected_errors.json");
-    if (!expected_errors.good()) {
-        json expected_errors_obj = re_expected_errors();
-        expected_errors << expected_errors_obj;
+        if (curr_obj != json_objs("expected_errors")) {
+            enter_obj(expected_errors_path, "expected_errors");
+            curr_obj.clear();
+        }
     }
-    expected_errors.close();
-
 
 }
 
@@ -43,7 +50,7 @@ int main_menu () {
     MM_screen.set_title("Main Menu");
     MM_screen.set_subtitle("Welcome to StockiFy!");    
     MM_screen.set_body_paragraph("This is a marketplace simulator in which you can sell and buy products. In Order to be able to to sell you will need to check the seller status in Clients settings.");
-    MM_screen.set_options_count(5);
+    MM_screen.set_options_count(6);
     MM_screen.set_options("Search products", 0);
     MM_screen.set_option_description("Search for products on sale so you can add them to your cart and then proceed to pay.", 0);
     MM_screen.set_options("Sell Products", 1);
@@ -63,18 +70,10 @@ int main_menu () {
 
 
 int main(int argc, char *argv[]) {
-
+    system("clear");
+    cout << rst;
     init_program();
-
-
-
-    main_menu();
-
-
-
-
-
-
+    // main_menu();
 
     return 0; 
 }

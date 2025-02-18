@@ -2,8 +2,13 @@
 #ifndef STRINGS_UTILS_H
 #define STRINGS_UTILS_H
 
+#include "Json_u.h"
+#include "Definitions.h"
+#include "Terminal_u.h"
 #include <string>
 #include <vector>
+#include <iostream>
+using namespace std;
 
 
 int is_valid_string (

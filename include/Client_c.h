@@ -2,7 +2,11 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
+#include "../../include/Strings_u.h"
+#include <iostream>
 #include <string>
+
+using namespace std;
 
 
 class Client {

@@ -2,12 +2,22 @@
 #ifndef MENU_INTERACTIONS_H
 #define MENU_INTERACTIONS_H
 
-#include <optional>
+#include "Terminal_u.h"
+#include "Json_u.h"
 #include <string>
+#include <iostream>
+#include <vector>
 
-std::string error_handler (int error_number);
+using namespace std;
 
-std::optional<int> select_option (int number_of_options);
+
+string error_handler (int error_number);
+
+int validate_option (
+    char input,
+    int number_of_options,
+    vector<char> options 
+);
 
 char get_arrow ();
 

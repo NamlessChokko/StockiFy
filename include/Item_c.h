@@ -2,7 +2,12 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+#include "../../include/Strings_u.h"
+#include <iostream>
 #include <string>
+#include <optional>
+
+using namespace std;
 
 
 class Item {

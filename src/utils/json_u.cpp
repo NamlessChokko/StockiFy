@@ -1,15 +1,6 @@
-#include "../../lib/nlohmann/json.hpp"
 #include "../../include/Json_u.h"
-#include <string>
-#include <optional>
-#include <iostream>
-#include <fstream>
 
-using namespace std;
-using namespace nlohmann;
-
-
-string get_string(string key, string file_path) {
+string get_value(string key, string file_path) {
     json json_file;
 
     try {
@@ -63,4 +54,35 @@ string read_error_message(int error_number, string file_path) {
     }
 
     return "null";
+}
+
+string makeFile_s (string name, string file_dir) {
+    fs::path directory(file_dir);
+    if (!fs::exists(directory)) {
+        fs::create_directories(directory);
+    }
+    fs::path file_path = directory / name;
+    std::ofstream file(file_path);
+    if (!file.is_open()) {
+        return ""; 
+    }
+
+    return file_path;
+}
+
+int enter_obj (string file_path, string obj){
+    ofstream file(file_path);
+
+    if (!file.is_open()) {
+        return 1;
+    }
+
+    try {
+        json object = json_objs(obj);
+        file << object.dump(4);
+    } catch (json::parse_error& e){
+        return 2;
+    }
+
+    return 0;
 }

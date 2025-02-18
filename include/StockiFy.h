@@ -8,6 +8,7 @@
 #include <string>
 #include <fstream>
 #include <unordered_map>
+#include <filesystem>
 
 #include "Client_c.h"
 #include "Item_c.h"
@@ -24,7 +25,8 @@
 #include "Print_Functions.h"
 
 using namespace std;
-using namespace nlohmann;
+using json = nlohmann::json;
+namespace fs = std::filesystem; 
 
 
 #endif // STOCKIFY_H

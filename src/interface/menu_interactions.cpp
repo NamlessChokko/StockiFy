@@ -1,11 +1,6 @@
 #include "../../include/Menu_Interactions.h"
-#include "../../include/Terminal_u.h"
-#include "../../include/Json_u.h"
-#include <string>
-#include <iostream>
-#include <vector>
 
-using namespace std;
+
 const int ESC = 033;
 const int SQR_BRCKT = 91;
 
@@ -17,8 +12,8 @@ string error_handler (
 
 int validate_option (
     char input,
-    int number_of_options = 3,
-    vector<char> options = {'1', '2', '3'}
+    int number_of_options,
+    vector<char> options
 ){
     char option;
     try{

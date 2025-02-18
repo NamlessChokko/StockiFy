@@ -1,15 +1,14 @@
 #pragma once
 #ifndef JSON_DEF_H
 #define JSON_DEF_H
-#include <string>
+
 #include "../../lib/nlohmann/json.hpp"
+#include <string>
+#include <unordered_map>
+
 using namespace std;
-using namespace nlohmann;
+using json = nlohmann::json;
 
-json re_allowed_char ();
-
-json re_expected_errors ();
-
-json resettings ();
+json json_objs(string key);
 
 #endif // JSON_DEF_H

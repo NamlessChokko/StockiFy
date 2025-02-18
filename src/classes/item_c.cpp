@@ -1,11 +1,4 @@
 #include "../../include/Item_c.h"
-#include "../../include/Strings_u.h"
-#include <iostream>
-#include <string>
-#include <optional>
-
-using namespace std;
-
 
 Item::Item(){
     clean_item_info();

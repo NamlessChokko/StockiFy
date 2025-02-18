@@ -1,11 +1,5 @@
 #include "../../include/Strings_u.h"
-#include "../../include/Json_u.h"
-#include "../../include/Definitions.h"
-#include "../../include/Terminal_u.h"
-#include <string>
-#include <iostream>
 
-using namespace std;
 
 unordered_map<string, string> colors = {
     {"*rs", rst},
@@ -48,7 +42,7 @@ int is_valid_string (
         return 310;
     }
 
-    string allowed_characters = get_string(key, "Skfy_settings/allowed_char.json");
+    string allowed_characters = get_value(key, "Skfy_settings/allowed_char.json");
 
     if (allowed_characters == "error") {
         return 304;

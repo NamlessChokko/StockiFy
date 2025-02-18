@@ -1,5 +1,4 @@
 #include "../../include/Math_u.h"
-#include <math.h>
 
 
 bool even (int input){

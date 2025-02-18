@@ -1,0 +1,8 @@
+{
+    "database_connection": {
+        "database": "skfy_db",
+        "host": "localhost",
+        "password": "password",
+        "username": "root"
+    }
+}

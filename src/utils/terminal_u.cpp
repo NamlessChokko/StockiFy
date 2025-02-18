@@ -1,5 +1,4 @@
 #include "../../include/Terminal_u.h"
-#include <iostream>
 
 #ifdef _WIN32
     #include <windows.h>

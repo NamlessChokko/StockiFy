@@ -1,7 +1,19 @@
 #include "../../include/Json_def.h"
 
-json re_allowed_char (){
-    return json::parse(R"(
+json json_objs(string key) {
+    unordered_map<string, string> json_files;
+
+    json_files["settings"] = R"(
+    {
+        "database_connection" : {
+            "host" : "localhost",
+            "username" : "root",
+            "password" : "password",
+            "database" : "skfy_db"
+        }
+    })";
+
+    json_files["allowed_char"] = R"(
     {
         "default_allowed_char" : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_",
         
@@ -12,12 +24,9 @@ json re_allowed_char (){
         "item_name" : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ",
         "item_description" : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_!@.#$%^&*() "
         
-    }
-    )");
-}
+    })";
 
-json re_expected_errors (){
-    return json::parse(R"(
+    json_files["expected_errors"] = R"(
     {
         "database_crud" : {
             "101" : "Database connection failed"
@@ -59,17 +68,12 @@ json re_expected_errors (){
         }
 
     }
-    )");
+    )";
+
+    json json_obj = json::parse(json_files[key]);
+
+    return json_obj;
 }
 
-json resettings (){
-    return json::parse(R"(
-    {
-        "settings" : {
-            "directory" : "Skfy_settings",
-            "allowed_char_file" : "allowed_char.json",
-            "expected_errors_file" : "expected_errors.json"
-        }
-    }
-    )");
-}
+
+

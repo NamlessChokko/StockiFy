@@ -2,30 +2,28 @@
 #ifndef PRINTF_UNCTIONS_H
 #define PRINTF_UNCTIONS_H
 
+#include "Menu.h"
+#include "Definitions.h"
+#include "Menu_Interactions.h"
+#include "Strings_u.h"
+#include "Terminal_u.h"
+#include "Math_u.h"
+#include "Json_u.h"
+#include <iostream>
 #include <string>
+#include <format>
+#include <vector>
 
-void printL(string input, string color, int width, bool has_border);
+using namespace std;
 
-void printC(string input, string color, int width);
 
-void Option_menu(
-    menu menu
-);
+void prtLL(string input, string color, int width, int number_lines, bool has_border);
 
-void Input_menu(
-    menu menu
-);
+void printL(string input, string color, size_t width, bool has_border);
 
-void Info_menu(
-    menu menu
-);
+void printC(string input, string color, size_t width, bool has_border);
 
-void Error_screen(int error_code);
-
-int initOpt(
-    menu menu 
-
-);
+int initOpt (menu menu);
 
 string input (
     string _prompt, 
@@ -36,6 +34,5 @@ string input (
     bool start_space,
     bool end_space
 );
-
 
 #endif // PRINTF_UNCTIONS_H
