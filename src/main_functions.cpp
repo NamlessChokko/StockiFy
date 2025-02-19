@@ -1,25 +1,5 @@
 #include "../include/Main_Functions.h"
 
-bool compare_file (string _file, json expected){
-    ifstream file(_file);
-
-    if (!file) {
-        return false;
-    }
-
-    try {
-        json object;
-        file >> object; 
-        if (object != expected) {
-            return false;
-        }
-    } catch (json::parse_error& e) {
-        return false; 
-    }
-
-    return true;
-};
-
 void init_program(){
     string settings_path = "Skfy_settings/settings.json";
     string allowed_char_path = "Skfy_settings/allowed_char.json";
@@ -76,3 +56,42 @@ void init_program(){
     cout << gn << "Expected errors file setted correctly." << endl;
 }
 
+void connect_to_database () {
+    system("clear");
+    cout << rst; 
+
+    printL("We need the login information to connect with the database. This information is not stored and will be reset when you leave the program", cn, getTerminalWidth(), false);
+    cout << "Press ENTER to continue...";
+    getch();
+
+    string name = input("Enter your database user name.", "Name", "user", 4, 50, false, false);
+    string password = input("Enter your password.", "Password",  "password", 8, 50, true, true);
+    
+
+
+
+}
+
+
+
+int main_menu () {
+    menu MM_screen;
+    MM_screen.set_title("Main Menu");
+    MM_screen.set_subtitle("Welcome to StockiFy!");    
+    MM_screen.set_body_paragraph("This is a marketplace simulator in which you can sell and buy products. In Order to be able to to sell you will need to check the seller status in Clients settings.");
+    MM_screen.set_options_count(6);
+    MM_screen.set_options("Search products", 0);
+    MM_screen.set_option_description("Search for products on sale so you can add them to your cart and then proceed to pay.", 0);
+    MM_screen.set_options("Sell Products", 1);
+    MM_screen.set_option_description("If you have enable the seller status, you can place a sell order.", 1);
+    MM_screen.set_options("Client Settings", 2);
+    MM_screen.set_option_description("Adjust your Client information: name, description, email etc. You can set your seller status as well.", 2);
+    MM_screen.set_options("Interface Settings", 3);
+    MM_screen.set_option_description("Modify the terminal interface appearance, file directions, and some functionalities.", 3);
+    MM_screen.set_options("Program Information", 4);
+    MM_screen.set_option_description("Shows some essential information about how the program works, errors that can ocurs and how to fix it, and developer data.", 4); 
+    MM_screen.set_options("Exit the Program", 5);
+    MM_screen.set_option_description("Close the program and disconnect the SQL server.", 5);
+
+    return initOpt(MM_screen);
+}

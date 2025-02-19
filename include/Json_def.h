@@ -2,7 +2,7 @@
 #ifndef JSON_DEF_H
 #define JSON_DEF_H
 
-#include "../../lib/nlohmann/json.hpp"
+#include "../lib/nlohmann/json.hpp"
 #include <string>
 #include <iostream>
 #include <unordered_map>

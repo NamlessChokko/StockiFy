@@ -2,8 +2,6 @@
 #ifndef TERMINAL_U_H
 #define TERMINAL_U_H
 
-#include <iostream>
-
 char getch();
 
 int getTerminalWidth();

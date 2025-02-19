@@ -4,7 +4,7 @@
 
 #include "Json_def.h"
 #include "Definitions.h"
-#include "../../lib/nlohmann/json.hpp"
+#include "../lib/nlohmann/json.hpp"
 #include <string>
 #include <optional>
 #include <iostream>
@@ -22,6 +22,8 @@ string read_error_message(int error_number, string file_path);
 string makeFile_s (string name, string dir);
 
 int enter_obj (string file_path, string obj);
+
+bool compare_file (string _file, json expected);
 
 
 #endif // JSON_U_H

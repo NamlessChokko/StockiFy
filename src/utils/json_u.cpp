@@ -87,3 +87,23 @@ int enter_obj (string file_path, string obj){
 
     return 0;
 }
+
+bool compare_file (string _file, json expected){
+    ifstream file(_file);
+
+    if (!file) {
+        return false;
+    }
+
+    try {
+        json object;
+        file >> object; 
+        if (object != expected) {
+            return false;
+        }
+    } catch (json::parse_error& e) {
+        return false; 
+    }
+
+    return true;
+};

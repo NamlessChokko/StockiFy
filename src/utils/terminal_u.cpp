@@ -6,6 +6,7 @@
 #else
     #include <termios.h> 
     #include <unistd.h>
+    #include <cstdio>
     #include <sys/ioctl.h>
     #include <unistd.h>
 #endif

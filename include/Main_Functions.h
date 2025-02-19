@@ -2,15 +2,16 @@
 #ifndef MAIN_FUNCTIONS_H
 #define MAIN_FUNCTIONS_H
 
+#include "StockiFy.h"
 #include <string>
 #include <fstream>
-#include "Json_def.h"
-#include "Json_u.h"
-#include "Definitions.h"
 
 
-bool compare_file (string _file, string expected);
 void init_program();
+
+void connect_to_database ();
+
+int main_menu ();
 
 
 #endif // MAIN_FUNCTIONS_H
