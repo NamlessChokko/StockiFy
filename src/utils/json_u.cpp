@@ -81,7 +81,8 @@ int enter_obj (string file_path, string obj){
         json object = json_objs(obj);
         file << object.dump(4);
     } catch (json::parse_error& e){
-        return 2;
+        cerr << rd << "Error: \n" << e.what() << rst << endl;
+        exit(1);
     }
 
     return 0;

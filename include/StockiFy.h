@@ -19,6 +19,7 @@
 #include "Strings_u.h"
 #include "Terminal_u.h"
 #include "Json_def.h"
+#include "Main_Functions.h"
 
 #include "Menu_Interactions.h"
 #include "Definitions.h"

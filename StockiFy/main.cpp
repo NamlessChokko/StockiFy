@@ -1,48 +1,6 @@
 #include "../include/StockiFy.h"
 
-void init_program(){
-    string settings_path = "Skfy_settings/settings.json";
-    string allowed_char_path = "Skfy_settings/allowed_char.json";
-    string expected_errors_path = "Skfy_settings/expected_errors.json";
 
-    fstream settings(settings_path);
-    if (!settings) {
-        makeFile_s("settings.json", "Skfy_settings");
-        enter_obj(settings_path, "settings");
-    }
-    settings.close();
-
-    fstream allowed_char(allowed_char_path); 
-    if (!allowed_char) {
-        makeFile_s("allowed_char.json", "Skfy_settings");
-        enter_obj(allowed_char_path, "allowed_char");
-    } else {
-        json curr_obj;
-        allowed_char >> curr_obj;
-        allowed_char.close();
-
-        if (curr_obj != json_objs("allowed_char")) {
-            enter_obj(allowed_char_path, "allowed_char");
-            curr_obj.clear();
-        }
-    }
-
-    fstream expected_errors(expected_errors_path); 
-    if (!expected_errors) {
-        makeFile_s("expected_errors.json", "Skfy_settings");
-        enter_obj(expected_errors_path, "expected_errors");
-    } else {
-        json curr_obj;
-        expected_errors >> curr_obj;
-        expected_errors.close();
-
-        if (curr_obj != json_objs("expected_errors")) {
-            enter_obj(expected_errors_path, "expected_errors");
-            curr_obj.clear();
-        }
-    }
-
-}
 
 int main_menu () {
     
@@ -71,9 +29,9 @@ int main_menu () {
 
 int main(int argc, char *argv[]) {
     system("clear");
-    cout << rst;
     init_program();
-    // main_menu();
+    cout << "Press ENTER to exit...";
+    getchar();
 
     return 0; 
 }

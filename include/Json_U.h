@@ -3,6 +3,7 @@
 #define JSON_U_H
 
 #include "Json_def.h"
+#include "Definitions.h"
 #include "../../lib/nlohmann/json.hpp"
 #include <string>
 #include <optional>
